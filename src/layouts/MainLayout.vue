@@ -94,6 +94,36 @@
           title: 'We Are Here',
           desc: 'Quisque purus augue, facilisis andi neque idont accumsan fringilla massa. Vivamusol id nibhom condimentum.',
         }"
+        :social="[
+          {
+            href: 'http://www.facebook.com',
+            icon: 'fa-brands fa-facebook',
+          },
+          {
+            href: 'http://www.x.com',
+            icon: 'fa-brands fa-twitter',
+          },
+          {
+            href: 'http://www.linkedin.com',
+            icon: 'fa-brands fa-linkedin',
+          },
+          {
+            href: 'http://www.instagram.com',
+            icon: 'fa-brands fa-instagram',
+          },
+        ]"
+        :payment="{
+          title: 'Payment Partner',
+          icons: [
+            'fa-brands fa-cc-visa',
+            'fa-brands fa-cc-mastercard',
+            'fa-brands fa-cc-paypal',
+            'fa-brands fa-cc-apple-pay',
+            'fa-brands fa-cc-stripe',
+            'fa-brands fa-cc-jcb',
+            'fa-brands fa-cc-amex',
+          ],
+        }"
       />
     </q-footer>
     <q-page-container>

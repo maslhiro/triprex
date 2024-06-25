@@ -14,60 +14,53 @@
     </div>
   </q-img>
 
-  <div class="q-ma-lg row">
+  <div class="container row contact-info">
     <!-- Contact Info -->
-    <div class="q-mt-xl col-12 col-md-5 row">
-      <div class="col-12 col-md-11">
-        <contact-info
-          title="Phone"
-          icon="phone"
-          :descriptions="['+990-737 621 432', '+990-137 324 465']"
-        />
-        <contact-info
-          title="Email Now"
-          icon="email"
-          :descriptions="['info@example.come', 'xample@example.com']"
-          class="q-mt-xl"
-        />
-        <contact-info
-          title="Location"
-          icon="location_on"
-          :descriptions="[
-            '68/170, Avenue 01, Old York Drive Rich Mirpur DOHS, Bangladesh',
-          ]"
-          class="q-mt-xl"
-        />
-        <contact-info
-          title="Open Time"
-          icon="date_range"
-          :descriptions="['8:00Am - 10:Pm, Friday Close']"
-          class="q-mt-xl"
-        />
-      </div>
-      <div class="col-md-1" />
+    <div class="col-12 col-md-5 q-pa-sm">
+      <contact-info
+        title="Phone"
+        icon="phone"
+        :descriptions="['+990-737 621 432', '+990-137 324 465']"
+      />
+      <contact-info
+        title="Email Now"
+        icon="email"
+        :descriptions="['info@example.come', 'xample@example.com']"
+        class="q-mt-xl"
+      />
+      <contact-info
+        title="Location"
+        icon="location_on"
+        :descriptions="[
+          '68/170, Avenue 01, Old York Drive Rich Mirpur DOHS, Bangladesh',
+        ]"
+        class="q-mt-xl"
+      />
+      <contact-info
+        title="Open Time"
+        icon="date_range"
+        :descriptions="['8:00Am - 10:Pm, Friday Close']"
+        class="q-mt-xl"
+      />
     </div>
-
     <!-- Contact Form -->
-    <div class="q-mt-xl col-12 col-md-7">
-      <div class="bg-accent form-container q-px-lg q-py-lg">
-        <h4 class="text-weight-bolder">Reach Us Anytime</h4>
-        <custom-input title="Name*" placeholder="Daniel Scott" />
-        <div class="row q-my-sm">
-          <div class="col">
-            <custom-input title="Phone*" placeholder="Phone Number" />
-          </div>
-          <div style="width: 20px" />
-          <div class="col">
-            <custom-input title="Email*" placeholder="Email us..." />
-          </div>
+    <div class="col-12 col-md-6 q-ma-sm bg-lime-1 form-container q-gutter-y-md">
+      <h4 class="text-weight-bolder">Reach Us Anytime</h4>
+      <custom-input title="Name*" placeholder="Daniel Scott" />
+      <div class="col-12 row justify-between">
+        <div class="col-12 col-lg-5">
+          <custom-input title="Phone*" placeholder="Phone Number" />
         </div>
-        <custom-input
-          title="Write Your Massage*"
-          placeholder="What's on your mind"
-          type="textarea"
-        />
-        <q-btn color="primary" label="Submit Now" class="q-mt-lg" />
+        <div class="col-12 col-lg-6">
+          <custom-input title="Email*" placeholder="Email us..." />
+        </div>
       </div>
+      <custom-input
+        title="Write Your Massage*"
+        placeholder="What's on your mind"
+        type="textarea"
+      />
+      <q-btn color="primary" label="Submit Now" class="q-mt-lg" />
     </div>
   </div>
 
@@ -86,5 +79,11 @@ defineOptions({
 <style scoped lang="scss">
 .form-container {
   border-radius: 12px;
+  padding: 60px 30px;
+}
+
+.contact-info {
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 </style>

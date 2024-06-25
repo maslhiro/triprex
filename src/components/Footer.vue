@@ -6,7 +6,7 @@
           <img
             src="../assets/logo_white.svg"
             fit="scale-down"
-            style="height: 60px; width: 210px"
+            style="height: 50px; width: 170px"
           />
         </div>
         <h4 class="text-weight-bolder">
@@ -15,7 +15,7 @@
         <q-btn
           color="secondary"
           no-caps
-          label="Book A Tour"
+          :label="btnTitle"
           size="md"
           class="text-weight-bold"
         />
@@ -50,49 +50,15 @@
           {{ extra.desc }}
         </div>
 
-        <div class="text-h5 text-weight-bolder">Payment Partner</div>
+        <div class="text-h5 text-weight-bolder">{{ payment.title }}</div>
 
-        <div class="row q-my-lg">
+        <div class="row q-my-lg q-gutter-x-xl">
           <q-icon
-            name="fa-brands fa-cc-visa"
+            v-for="(item, index) in payment.icons"
+            :key="index"
+            :name="item"
             size="30px"
-            class="col-2 q-py-sm"
-          />
-          <div class="col-1" />
-          <q-icon
-            name="fa-brands fa-cc-mastercard"
-            size="30px"
-            class="col-2 q-py-sm"
-          />
-          <div class="col-1" />
-          <q-icon
-            name="fa-brands fa-cc-paypal"
-            size="30px"
-            class="col-2 q-py-sm"
-          />
-          <div class="col-1 bg" />
-          <q-icon
-            name="fa-brands fa-cc-apple-pay"
-            size="30px"
-            class="col-2 q-py-sm"
-          />
-          <div class="col-1" />
-          <q-icon
-            name="fa-brands fa-cc-stripe"
-            size="30px"
-            class="col-2 q-py-sm"
-          />
-          <div class="col-1" />
-          <q-icon
-            name="fa-brands fa-cc-jcb"
-            size="30px"
-            class="col-2 q-py-sm"
-          />
-          <div class="col-1" />
-          <q-icon
-            name="fa-brands fa-cc-amex"
-            size="30px"
-            class="col-2 q-py-sm"
+            class="q-py-sm"
           />
         </div>
       </div>
@@ -103,36 +69,15 @@
       style="border-top: 1px solid rgba(255, 255, 255, 0.1)"
     >
       <div class="q-gutter-x-sm">
-        <a
-          :href="item.href"
-          v-for="item in [
-            {
-              href: 'http://www.facebook.com',
-              icon: 'fa-facebook',
-            },
-            {
-              href: 'http://www.x.com',
-              icon: 'fa-twitter',
-            },
-            {
-              href: 'http://www.linkedin.com',
-              icon: 'fa-linkedin',
-            },
-            {
-              href: 'http://www.instagram.com',
-              icon: 'fa-instagram',
-            },
-          ]"
-          :key="item.href"
-        >
+        <a :href="item.href" v-for="item in social" :key="item.href">
           <i
-            :class="['fa-brands', item.icon, 'text-hover', 'q-pa-sm'].join(' ')"
+            :class="[item.icon, 'text-hover', 'q-pa-sm']"
             style="font-size: 1.5em"
           />
         </a>
       </div>
       <div class="col-md-6 col-lg-7 text-subtitle1 text-grey q-pa-xs">
-        ©Copyright 2024 TripRex |
+        ©Copyright {{ new Date().getFullYear() }} TripRex |
         <span class="text-subtitle1 text-weight-bold"
           >| Developed by niiviie</span
         >
@@ -165,6 +110,16 @@ defineOptions({
   name: 'CustomFooter',
 });
 
+interface PaymentInformation {
+  icons: string[];
+  title: string;
+}
+
+interface SocialInformation {
+  href: string;
+  icon: string;
+}
+
 interface ContactInformation {
   title: string;
   icon?: string;
@@ -182,6 +137,8 @@ interface Props {
   contact: ContactInformation[];
   widget: Widget;
   extra: ContactInformation;
+  social: SocialInformation[];
+  payment: PaymentInformation;
 }
 
 withDefaults(defineProps<Props>(), {
