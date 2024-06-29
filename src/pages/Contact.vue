@@ -14,7 +14,7 @@
     </div>
   </q-img>
 
-  <div class="container row contact-info">
+  <div class="container row contact-info q-gutter-y-md">
     <!-- Contact Info -->
     <div class="col-12 col-md-5 q-pa-sm">
       <contact-info
@@ -44,23 +44,25 @@
       />
     </div>
     <!-- Contact Form -->
-    <div class="col-12 col-md-6 q-ma-sm bg-lime-1 form-container q-gutter-y-md">
-      <h4 class="text-weight-bolder">Reach Us Anytime</h4>
-      <custom-input title="Name*" placeholder="Daniel Scott" />
-      <div class="col-12 row justify-between">
-        <div class="col-12 col-lg-5">
-          <custom-input title="Phone*" placeholder="Phone Number" />
+    <div class="col-12 col-md-6 q-pa-sm">
+      <div class="col bg-lime-1 form-container q-gutter-y-md">
+        <h4 class="text-weight-bolder">Reach Us Anytime</h4>
+        <custom-input title="Name*" placeholder="Daniel Scott" />
+        <div class="col-12 row justify-between">
+          <div class="col-12 col-lg-5">
+            <custom-input title="Phone*" placeholder="Phone Number" />
+          </div>
+          <div class="col-12 col-lg-6">
+            <custom-input title="Email*" placeholder="Email us..." />
+          </div>
         </div>
-        <div class="col-12 col-lg-6">
-          <custom-input title="Email*" placeholder="Email us..." />
-        </div>
+        <custom-input
+          title="Write Your Massage*"
+          placeholder="What's on your mind"
+          type="textarea"
+        />
+        <q-btn color="primary" label="Submit Now" class="q-mt-lg" />
       </div>
-      <custom-input
-        title="Write Your Massage*"
-        placeholder="What's on your mind"
-        type="textarea"
-      />
-      <q-btn color="primary" label="Submit Now" class="q-mt-lg" />
     </div>
   </div>
 
