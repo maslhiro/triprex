@@ -66,7 +66,18 @@
     </div>
   </div>
 
-  <div class="bg-accent" style="width: 100%; min-height: 40em" />
+  <div
+    class="bg-accent"
+    style="
+      width: 100%;
+      min-height: 40em;
+      justify-items: center;
+      align-items: center;
+      text-align: center;
+    "
+  >
+    Google Map View
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -87,5 +98,6 @@ defineOptions({
 .contact-info {
   margin-top: 100px;
   margin-bottom: 100px;
+  justify-content: center;
 }
 </style>

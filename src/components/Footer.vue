@@ -1,6 +1,6 @@
 <template>
   <q-footer class="bg-transparent">
-    <div class="q-px-sm banner-container">
+    <div class="q-px-md banner-container">
       <banner
         class="container content row overflow-hidden justify-between bg-white shadow-3 relative-position"
       />
@@ -179,9 +179,10 @@ withDefaults(defineProps<Props>(), {
 }
 
 .banner-container {
-  margin-bottom: -140px;
+  margin-top: -180px;
   z-index: 2;
-  position: relative;
+  width: 100%;
+  position: absolute;
 }
 
 .footer-container {
@@ -190,7 +191,7 @@ withDefaults(defineProps<Props>(), {
 
 @media (min-width: $md-breakpoint) {
   .banner-container {
-    margin-bottom: -70px;
+    margin-top: -240px;
   }
 
   .footer-container {
