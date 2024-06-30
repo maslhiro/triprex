@@ -1,6 +1,62 @@
 <template>
   <q-layout view="lHh lpr lff">
-    <custom-header />
+    <custom-header
+      :data="[
+        {
+          title: 'HOME',
+          submenu: [
+            { title: 'HOME 1', href: '' },
+            { title: 'HOME 2', href: '' },
+            { title: 'HOME 3', href: '' },
+            { title: 'HOME 4', href: '' },
+            { title: 'HOME 5', href: '' },
+            { title: 'HOME 6', href: '' },
+          ],
+        },
+        { title: 'ABOUT' },
+        {
+          title: 'TOURS',
+          submenu: [
+            {
+              title: 'PACKAGE GRID',
+              href: '',
+            },
+            { title: 'PACKAGE SIDEBAR', href: '' },
+            {
+              title: 'PACKAGE CATEGORY',
+              href: '',
+            },
+            { title: 'PACKAGE DETAIL', href: '' },
+          ],
+        },
+        {
+          title: 'DESTINATION',
+          submenu: [
+            { title: 'DESTINATION 1', href: '' },
+            { title: 'DESTINATION 2', href: '' },
+            { title: 'DESTINATION 3', href: '' },
+            { title: 'DESTINATION 4', href: '' },
+            { title: 'DESTINATION 5', href: '' },
+            { title: 'DESTINATION 6', href: '' },
+            { title: 'DESTINATION DETAIL', href: '' },
+          ],
+        },
+        {
+          title: 'PAGES',
+          submenu: [
+            { title: 'HOTEL', href: '' },
+            { title: 'TOUR GUIDE', href: '' },
+            { title: 'VISA', href: '' },
+            { title: 'FAQ', href: '' },
+          ],
+        },
+        { title: 'CONTACT' },
+      ]"
+      :contact="{
+        title: 'To More Inquiry',
+        desc: '+880 123 456 789',
+      }"
+    />
 
     <custom-footer
       title="Want To Take Tour Packages?"
@@ -67,6 +123,13 @@
         ],
       }"
     />
+    <!--
+    <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
+    </q-drawer>
+
+    <q-drawer show-if-above v-model="rightDrawerOpen" side="right" bordered>
+    </q-drawer> -->
+
     <q-page-container>
       <router-view />
     </q-page-container>

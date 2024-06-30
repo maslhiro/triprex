@@ -30,15 +30,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { debounce } from 'quasar';
+import { SubMenu } from '../types';
 
 defineOptions({
   name: 'MenuHover',
 });
-
-interface SubMenu {
-  title: string;
-  href: string;
-}
 
 interface Props {
   title: string;
@@ -71,6 +67,10 @@ function mouseLeave() {
 </script>
 
 <style scoped>
+.content {
+  z-index: 9999;
+}
+
 .title-hover {
   transition: color 0.3s;
   color: var(--q-dark);
