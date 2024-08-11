@@ -12,7 +12,7 @@
           <div class="col-lg-3 col-md-6 col-sm-6 q-py-lg q-px-sm">
             <div class="flex self-start justify-start items-start row">
               <img
-                src="../assets/logo_white.svg"
+                src="logo_white.svg"
                 fit="scale-down"
                 style="height: 50px; width: 170px"
               />

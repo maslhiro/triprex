@@ -1,6 +1,8 @@
 <template>
-  <q-layout view="lHh lpr lff">
+  <q-layout view="lHr lpr lfr">
     <custom-header
+      @profile-click="drawerLeft = !drawerLeft"
+      @menu-click="drawerRightVisible = !drawerRightVisible"
       :data="[
         {
           title: 'HOME',
@@ -57,6 +59,110 @@
         desc: '+880 123 456 789',
       }"
     />
+
+    <drawer-right
+      :visible="drawerRightVisible"
+      @close="drawerRightVisible = !drawerRightVisible"
+      tourTitle="Tour Style"
+      destination-title="Our Destinations"
+      :tour-data="[
+        {
+          title: 'adventure tours',
+          icon: 'adventure_tour.svg',
+          href: '',
+        },
+
+        {
+          title: 'cultural tours',
+          icon: 'cultural_tour.svg',
+          href: '',
+        },
+        {
+          title: 'group tours',
+          icon: 'group_tour.svg',
+          href: '',
+        },
+        {
+          title: 'historical tours',
+          icon: 'historical_tour.svg',
+          href: '',
+        },
+        {
+          title: 'honey moon tours',
+          icon: 'honeymoon_tour.svg',
+          href: '',
+        },
+        {
+          title: 'luxury tours',
+          icon: 'luxury_tour.svg',
+          href: '',
+        },
+      ]"
+      :destination-data="[
+        {
+          name: 'India',
+          desc: '5 tour',
+          image:
+            'https://triprex.b-cdn.net/wp-content/uploads/2024/02/Destination-09.webp',
+          href: '',
+        },
+        {
+          name: 'Brazil',
+          desc: '5 tour',
+          image:
+            'https://triprex.b-cdn.net/wp-content/uploads/2024/02/Destination-08.webp',
+          href: '',
+        },
+        {
+          name: 'India',
+          desc: '5 tour',
+          image:
+            'https://triprex.b-cdn.net/wp-content/uploads/2024/02/Destination-07.webp',
+          href: '',
+        },
+        {
+          name: 'Australia',
+          desc: '5 tour',
+          image:
+            'https://triprex.b-cdn.net/wp-content/uploads/2024/02/Destination-06.webp',
+          href: '',
+        },
+        {
+          name: 'Sweden',
+          desc: '5 tour',
+          image:
+            'https://triprex.b-cdn.net/wp-content/uploads/2024/02/Destination-05.webp',
+          href: '',
+        },
+        {
+          name: 'Japan',
+          desc: '5 tour',
+          image:
+            'https://triprex.b-cdn.net/wp-content/uploads/2024/02/Destination-04.webp',
+          href: '',
+        },
+      ]"
+      :contact="[
+        {
+          title: 'More Inquiry',
+          icon: 'phone',
+          desc: '+999-858 624 984',
+        },
+        {
+          title: 'Send Mail',
+          icon: 'mail',
+          desc: 'info@example.com',
+        },
+      ]"
+    />
+
+    <q-drawer v-model="drawerLeft" side="left" overlay>
+      <q-scroll-area class="fit">
+        <div class="q-pa-sm">
+          <div v-for="n in 50" :key="n">Drawer {{ n }} / 50</div>
+        </div>
+      </q-scroll-area>
+    </q-drawer>
 
     <custom-footer
       title="Want To Take Tour Packages?"
@@ -123,12 +229,6 @@
         ],
       }"
     />
-    <!--
-    <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
-    </q-drawer>
-
-    <q-drawer show-if-above v-model="rightDrawerOpen" side="right" bordered>
-    </q-drawer> -->
 
     <q-page-container>
       <router-view />
@@ -139,10 +239,15 @@
 <script setup lang="ts">
 import CustomFooter from 'src/components/Footer.vue';
 import CustomHeader from 'src/components/Header.vue';
+import DrawerRight from 'src/components/DrawerRight.vue';
+import { ref } from 'vue';
 
 defineOptions({
   name: 'MainLayout',
 });
+
+const drawerLeft = ref(false);
+const drawerRightVisible = ref(false);
 </script>
 
 <style scoped>

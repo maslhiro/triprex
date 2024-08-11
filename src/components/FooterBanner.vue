@@ -2,7 +2,7 @@
   <div>
     <img
       fit="cover"
-      src="../assets/banner_left.png"
+      src="banner_left.png"
       class="gt-sm absolute-left full-height"
     />
     <div class="text-black text-center col">
@@ -27,7 +27,7 @@
       </q-input>
     </div>
     <img
-      src="../assets/banner_right.png"
+      src="banner_right.png"
       fit="cover"
       class="gt-sm absolute-right full-height"
     />

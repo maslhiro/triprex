@@ -48,7 +48,7 @@
       <div class="col bg-lime-1 form-container q-gutter-y-md">
         <h4 class="text-weight-bolder">Reach Us Anytime</h4>
         <custom-input title="Name*" placeholder="Daniel Scott" />
-        <div class="col-12 row justify-between">
+        <div class="col-12 row justify-between q-gutter-y-xs">
           <div class="col-12 col-lg-5">
             <custom-input title="Phone*" placeholder="Phone Number" />
           </div>
