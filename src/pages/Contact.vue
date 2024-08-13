@@ -1,9 +1,5 @@
 <template>
-  <q-img
-    src="https://cdn.quasar.dev/img/parallax2.jpg"
-    no-native-menu
-    height="25em"
-  >
+  <q-img class="bg-container" no-native-menu height="25em">
     <div class="absolute-center cursor-pointer bg-transparent">
       <div class="text-h2 text-center text-weight-bold">Contact</div>
       <div class="text-subtitle1 text-center text-weight-medium">
@@ -67,17 +63,16 @@
   </div>
 
   <div
-    class="bg-accent"
     style="
       width: 100%;
       min-height: 40em;
-      justify-items: center;
+      /* justify-items: center;
       align-items: center;
-      text-align: center;
+      text-align: center; */
+      background-size: cover;
+      background-image: url(https://bacsyphauthuatsurgeon.wordpress.com/wp-content/uploads/2021/09/ban-phung-525.webp?w=1280);
     "
-  >
-    Google Map View
-  </div>
+  ></div>
 </template>
 
 <script setup lang="ts">
@@ -85,7 +80,7 @@ import ContactInfo from 'src/components/ContactInfo.vue';
 import CustomInput from 'src/components/Input.vue';
 
 defineOptions({
-  name: 'App',
+  name: 'ContactPage',
 });
 </script>
 
@@ -99,5 +94,14 @@ defineOptions({
   margin-top: 100px;
   margin-bottom: 100px;
   justify-content: center;
+}
+
+.bg-container {
+  background-image: linear-gradient(
+      270deg,
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.3) 101.02%
+    ),
+    url(https://triprex.egenslab.com/wp-content/plugins/triprex-core//inc/theme-options/images/breadcrumb/inner-banner-bg.jpg);
 }
 </style>

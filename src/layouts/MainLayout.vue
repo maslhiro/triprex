@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHr lpr lfr">
     <custom-header
-      @profile-click="drawerLeft = !drawerLeft"
+      @profile-click="onProfileClick"
       @menu-click="drawerRightVisible = !drawerRightVisible"
       :data="[
         {
@@ -241,6 +241,9 @@ import CustomFooter from 'src/components/Footer.vue';
 import CustomHeader from 'src/components/Header.vue';
 import DrawerRight from 'src/components/DrawerRight.vue';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 defineOptions({
   name: 'MainLayout',
@@ -248,6 +251,10 @@ defineOptions({
 
 const drawerLeft = ref(false);
 const drawerRightVisible = ref(false);
+
+const onProfileClick = () => {
+  router.push('/my-account');
+};
 </script>
 
 <style scoped>

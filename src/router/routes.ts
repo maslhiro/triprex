@@ -4,12 +4,17 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
-    children: [{ path: '', component: () => import('pages/IndexPage.vue') }],
-  },
-  {
-    path: '/contact',
-    component: () => import('layouts/MainLayout.vue'),
-    children: [{ path: '', component: () => import('pages/Contact.vue') }],
+    children: [
+      { path: '', component: () => import('pages/IndexPage.vue') },
+      {
+        path: 'contact',
+        component: () => import('pages/Contact.vue'),
+      },
+      {
+        path: 'my-account',
+        component: () => import('pages/MyAccount.vue'),
+      },
+    ],
   },
   {
     path: '/:catchAll(.*)*',
