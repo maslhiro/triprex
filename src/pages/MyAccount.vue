@@ -10,18 +10,11 @@
     </div>
   </q-img>
 
-  <div class="container row contact-info q-gutter-y-md">
-    <!-- Contact Info -->
-    <div
-      class="col-12 col-md-5 q-pa-lg"
-      style="
-        border-style: solid;
-        border: 1px solid var(--q-dark);
-        border-radius: 4px;
-      "
-    >
+  <div class="container row contact-info q-gutter-lg">
+    <!-- Login Form -->
+    <div class="col-12 col-md-5 q-pa-lg form-container">
       <div class="text-h4 text-bold q-py-lg">Login</div>
-      <q-form @submit.prevent="onSubmit" @reset="onReset" class="q-gutter-lg">
+      <q-form @submit.prevent="onLogin" @reset="onReset" class="q-gutter-lg">
         <q-input
           filled
           v-model="name"
@@ -41,14 +34,14 @@
           ]"
         />
 
-        <q-toggle v-model="accept" label="Remember me" />
+        <q-toggle v-model="remember" label="Remember me" />
 
         <div>
           <q-btn
             label="Login"
             type="submit"
             color="primary"
-            :loading="submitting"
+            :loading="loadingLogin"
           >
             <template v-slot:loading>
               <q-spinner-facebook />
@@ -65,25 +58,58 @@
       </q-form>
     </div>
     <!-- Contact Form -->
-    <div class="col-12 col-md-6 q-pa-sm">
-      <div class="col bg-lime-1 form-container q-gutter-y-md">
-        <h4 class="text-weight-bolder">Reach Us Anytime</h4>
-        <custom-input title="Name*" placeholder="Daniel Scott" />
-        <div class="col-12 row justify-between q-gutter-y-xs">
-          <div class="col-12 col-lg-5">
-            <custom-input title="Phone*" placeholder="Phone Number" />
-          </div>
-          <div class="col-12 col-lg-6">
-            <custom-input title="Email*" placeholder="Email us..." />
-          </div>
-        </div>
-        <custom-input
-          title="Write Your Massage*"
-          placeholder="What's on your mind"
-          type="textarea"
+    <div class="col-12 col-md-6 q-pa-lg form-container">
+      <div class="text-h4 text-bold q-py-lg">Register</div>
+      <q-form @submit.prevent="onRegister" class="q-gutter-lg">
+        <q-input
+          filled
+          v-model="userName"
+          label="Username"
+          lazy-rules
+          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
         />
-        <q-btn color="primary" label="Submit Now" class="q-mt-lg" />
-      </div>
+
+        <q-input
+          filled
+          v-model="email"
+          label="Email"
+          lazy-rules
+          :rules="[
+            (val) => (val && val.length > 0) || 'Please type something',
+            (val) =>
+              !!val.includes('@.com.vn') ||
+              'Please enter a valid email address',
+          ]"
+        />
+
+        <q-input
+          filled
+          v-model="registerPass"
+          label="Password *"
+          lazy-rules
+          :rules="[
+            (val) => val?.length > 8 || 'Minimum 8 character',
+            (val) => /\d/.test(val) || 'At least one number',
+          ]"
+        />
+
+        <div class="text-subtit">
+          Your personal data will be used to support your experience throughout
+          this website, to manage access to your account, and for other purposes
+          described in our <a href="#">privacy policy</a>.
+        </div>
+
+        <q-btn
+          label="Register"
+          type="submit"
+          color="primary"
+          :loading="loadingRegister"
+        >
+          <template v-slot:loading>
+            <q-spinner-facebook />
+          </template>
+        </q-btn>
+      </q-form>
     </div>
   </div>
   <div style="width: 100%; min-height: 20em"></div>
@@ -91,7 +117,6 @@
 
 <script setup lang="ts">
 import { useQuasar } from 'quasar';
-import CustomInput from 'src/components/Input.vue';
 import { computed, ref } from 'vue';
 import { useUserStore } from 'stores/user';
 
@@ -103,29 +128,52 @@ const $q = useQuasar();
 
 const name = ref('');
 const pass = ref('');
-const accept = ref(false);
-const submitting = ref(false);
+
+const userName = ref('');
+const email = ref('');
+const registerPass = ref('');
+
+const remember = ref(false);
+
+const mode = ref<'login' | 'register'>('login');
+const loading = ref(false);
+
 const store = useUserStore();
 
-const onSubmit = () => {
-  submitting.value = true;
+const onLogin = () => {
+  loading.value = true;
+  mode.value = 'login';
   store.login(name.value, pass.value, () => {
-    submitting.value = false;
+    loading.value = false;
+  });
+};
+
+const onRegister = () => {
+  loading.value = true;
+  mode.value = 'register';
+  store.register(userName.value, email.value, registerPass.value, () => {
+    loading.value = false;
   });
 };
 
 const onReset = () => {
   name.value = '';
   pass.value = '';
-  accept.value = false;
-  submitting.value = false;
+  remember.value = false;
+  loading.value = false;
 };
+
+const loadingLogin = computed(() => loading.value && mode.value === 'login');
+const loadingRegister = computed(
+  () => loading.value && mode.value === 'register'
+);
 </script>
 
 <style scoped lang="scss">
 .form-container {
-  border-radius: 12px;
-  padding: 60px 30px;
+  border-style: solid;
+  border: 1px solid gray;
+  border-radius: 4px;
 }
 
 .contact-info {

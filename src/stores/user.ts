@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { requestLogin } from 'src/apis/authen';
+import { requestLogin, requestSignUp } from 'src/apis/authen';
 
 export const useUserStore = defineStore('user', {
   state: () => ({
@@ -10,9 +10,18 @@ export const useUserStore = defineStore('user', {
   // },
   actions: {
     async login(username: string, password: string, callback?: () => void) {
-      const message = await requestLogin(username, password);
-      this.name = !message ? username : '';
+      const result = await requestLogin(username, password);
+      this.name = result ? username : '';
       callback?.();
+    },
+    async register(
+      username: string,
+      email: string,
+      password: string,
+      callback?: (result: boolean) => void
+    ) {
+      const result = await requestSignUp(username, email, password);
+      callback?.(result);
     },
   },
 });
