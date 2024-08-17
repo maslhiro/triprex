@@ -10,7 +10,7 @@
     </div>
   </q-img>
 
-  <div class="container row contact-info q-gutter-lg">
+  <div v-show="!store.name" class="container row contact-info q-gutter-lg">
     <!-- Login Form -->
     <div class="col-12 col-md-5 q-pa-lg form-container">
       <div class="text-h4 text-bold q-py-lg">Login</div>
@@ -111,6 +111,10 @@
         </q-btn>
       </q-form>
     </div>
+  </div>
+
+  <div v-show="store.name" class="container row contact-info q-gutter-lg">
+    <div class="text-h3 text-bold">Welcome, {{ store.name }} :3</div>
   </div>
   <div style="width: 100%; min-height: 20em"></div>
 </template>
