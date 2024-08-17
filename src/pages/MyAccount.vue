@@ -113,8 +113,12 @@
     </div>
   </div>
 
-  <div v-show="store.name" class="container row contact-info q-gutter-lg">
+  <div
+    v-show="store.name"
+    class="container contact-info q-gutter-lg text-center"
+  >
     <div class="text-h3 text-bold">Welcome, {{ store.name }} :3</div>
+    <q-btn color="primary" label="Logout" @click="onLogout" />
   </div>
   <div style="width: 100%; min-height: 20em"></div>
 </template>
@@ -165,6 +169,10 @@ const onReset = () => {
   pass.value = '';
   remember.value = false;
   loading.value = false;
+};
+
+const onLogout = () => {
+  store.logout();
 };
 
 const loadingLogin = computed(() => loading.value && mode.value === 'login');
