@@ -29,9 +29,7 @@
     </div>
 
     <div class="q-pa-md bg-transparent">
-      <div class="text-h5 q-pb-lg text-weight-bolder">
-        {{ destinationTitle }}
-      </div>
+      <div class="text-h5 q-pb-lg text-weight-bolder">Ours Destination</div>
       <q-carousel
         animated
         infinite
@@ -53,7 +51,7 @@
             :key="tour.name"
             class="tour-card"
             :style="{
-              'background-image': `url(${tour.name})`,
+              'background-image': `url(${tour.image})`,
             }"
           >
             <q-card-section class="flex justify-end">
@@ -137,15 +135,13 @@ const carousel = ref(1);
 
 const destinationStore = useDestinationStore();
 
-const destinationList: Destination[] = [];
+const destinationList: Destination[] = destinationStore.ourDestination;
 
 const props = withDefaults(defineProps<Props>(), {
   visible: false,
   onClose: () => null,
   tourTitle: '',
   tourData: () => [],
-  destinationTitle: '',
-  destinationData: () => [],
 });
 
 const DEFAULT_WIDTH_1 = 500;
@@ -157,8 +153,8 @@ const carouselData = computed(() => {
   let result: Destination[][] = [];
   for (let i = 0; i < destinationList.length; i++) {
     if (i != 0 && result[result.length - 1].length != 2) {
-      result[result.length - 1].push(props.destinationData[i]);
-    } else result.push([props.destinationData[i]]);
+      result[result.length - 1].push(destinationList[i]);
+    } else result.push([destinationList[i]]);
   }
   console.log(result);
   console.log(destinationList);

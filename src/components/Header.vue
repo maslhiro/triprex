@@ -8,6 +8,7 @@
           :key="item.title"
           :title="item.title"
           :sub-menu="item.submenu"
+          :href="item.href"
           style="z-index: 100000"
         />
       </div>
@@ -35,6 +36,7 @@ defineOptions({
 interface MenuItem {
   title: string;
   submenu?: SubMenu[];
+  href?: string;
 }
 
 interface Props {

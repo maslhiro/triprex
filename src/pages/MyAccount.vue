@@ -1,14 +1,5 @@
 <template>
-  <q-img class="bg-container" no-native-menu height="25em">
-    <div class="absolute-center cursor-pointer bg-transparent">
-      <div class="text-h2 text-center text-weight-bold">My Account</div>
-      <div class="text-subtitle1 text-center text-weight-medium">
-        Home
-        <q-icon name="trending_flat" />
-        My Account
-      </div>
-    </div>
-  </q-img>
+  <header-cover title="My Account" />
 
   <div v-show="!store.name" class="container row contact-info q-gutter-lg">
     <!-- Login Form -->
@@ -125,6 +116,7 @@
 
 <script setup lang="ts">
 import { useQuasar } from 'quasar';
+import HeaderCover from 'src/components/HeaderCover.vue';
 import { computed, ref } from 'vue';
 import { useUserStore } from 'stores/user';
 

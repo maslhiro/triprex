@@ -33,14 +33,15 @@
         },
         {
           title: 'DESTINATION',
+          href: 'destination',
           submenu: [
             { title: 'DESTINATION 1', href: 'destination' },
-            { title: 'DESTINATION 2', href: '' },
-            { title: 'DESTINATION 3', href: '' },
-            { title: 'DESTINATION 4', href: '' },
-            { title: 'DESTINATION 5', href: '' },
-            { title: 'DESTINATION 6', href: '' },
-            { title: 'DESTINATION DETAIL', href: '' },
+            { title: 'DESTINATION 2', href: 'destination' },
+            { title: 'DESTINATION 3', href: 'destination' },
+            { title: 'DESTINATION 4', href: 'destination' },
+            { title: 'DESTINATION 5', href: 'destination' },
+            { title: 'DESTINATION 6', href: 'destination' },
+            { title: 'DESTINATION DETAIL', href: 'destination' },
           ],
         },
         {
@@ -52,7 +53,7 @@
             { title: 'FAQ', href: '' },
           ],
         },
-        { title: 'CONTACT' },
+        { title: 'CONTACT', href: 'contact' },
       ]"
       :contact="{
         title: 'To More Inquiry',

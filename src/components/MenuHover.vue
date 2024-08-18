@@ -1,6 +1,9 @@
 <template>
   <div class="q-px-md" @mouseover="mouseOver" @mouseleave="mouseLeave">
-    <div class="text-subtitle1 title-hover cursor-pointer text-weight-medium">
+    <div
+      class="text-subtitle1 title-hover cursor-pointer text-weight-medium"
+      @click="onMenuClick"
+    >
       {{ title }}
     </div>
     <q-menu
@@ -44,9 +47,10 @@ defineOptions({
 interface Props {
   title: string;
   subMenu?: SubMenu[];
+  href?: string;
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   title: () => 'New tab',
   subMenu: () => [],
 });
@@ -69,6 +73,12 @@ function mouseOver() {
 function mouseLeave() {
   debouncedMouseLeave();
 }
+
+const onMenuClick = () => {
+  if (props?.href) {
+    router.push(props.href);
+  }
+};
 </script>
 
 <style scoped>

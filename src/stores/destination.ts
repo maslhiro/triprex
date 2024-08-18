@@ -7,21 +7,11 @@ export const useDestinationStore = () => {
   const innerStore = defineStore('destination', {
     state: () => ({
       isInitialized: false,
-      list: (LocalStorage.getItem('destination-list') || {}) as Destination[],
+      list: (LocalStorage.getItem('destination-list') || []) as Destination[],
     }),
     getters: {
-      destinationList: async (state) => {
-        if (!state.isInitialized) {
-          await fetchAll();
-        }
-        return state.list;
-      },
-      ourDestination: async (state) => {
-        if (!state.isInitialized) {
-          await fetchAll();
-        }
-        return state.list?.slice(0, 5);
-      },
+      destinationList: (state) => state.list,
+      ourDestination: (state) => state.list?.slice(0, 10),
     },
     actions: {
       async fetchAll(callback?: () => void) {
@@ -34,5 +24,10 @@ export const useDestinationStore = () => {
     },
   });
 
-  return innerStore;
+  const store = innerStore();
+  if (!store.isInitialized) {
+    store.fetchAll();
+  }
+
+  return store;
 };

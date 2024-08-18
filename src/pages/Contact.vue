@@ -1,14 +1,5 @@
 <template>
-  <q-img class="bg-container" no-native-menu height="25em">
-    <div class="absolute-center cursor-pointer bg-transparent">
-      <div class="text-h2 text-center text-weight-bold">Contact</div>
-      <div class="text-subtitle1 text-center text-weight-medium">
-        Home
-        <q-icon name="trending_flat" />
-        Contact
-      </div>
-    </div>
-  </q-img>
+  <header-cover title="Contact" />
 
   <div class="container row contact-info q-gutter-y-md">
     <!-- Contact Info -->
@@ -78,6 +69,7 @@
 <script setup lang="ts">
 import ContactInfo from 'src/components/ContactInfo.vue';
 import CustomInput from 'src/components/Input.vue';
+import HeaderCover from 'src/components/HeaderCover.vue';
 
 defineOptions({
   name: 'ContactPage',
@@ -94,14 +86,5 @@ defineOptions({
   margin-top: 100px;
   margin-bottom: 100px;
   justify-content: center;
-}
-
-.bg-container {
-  background-image: linear-gradient(
-      270deg,
-      rgba(0, 0, 0, 0.3),
-      rgba(0, 0, 0, 0.3) 101.02%
-    ),
-    url(https://triprex.egenslab.com/wp-content/plugins/triprex-core//inc/theme-options/images/breadcrumb/inner-banner-bg.jpg);
 }
 </style>
