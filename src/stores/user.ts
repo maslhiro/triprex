@@ -1,9 +1,10 @@
 import { defineStore } from 'pinia';
+import { LocalStorage, Notify } from 'quasar';
 import { requestLogin, requestSignUp } from 'src/apis/authen';
 
 export const useUserStore = defineStore('user', {
   state: () => ({
-    name: '',
+    name: (LocalStorage.getItem('user') || '') as string,
   }),
   // getters: {
   //   doubleCount: (state) => state.counter * 2,
@@ -12,6 +13,7 @@ export const useUserStore = defineStore('user', {
     async login(username: string, password: string, callback?: () => void) {
       const result = await requestLogin(username, password);
       this.name = result ? username : '';
+      LocalStorage.setItem('user', this.name);
       callback?.();
     },
     async register(
@@ -22,6 +24,15 @@ export const useUserStore = defineStore('user', {
     ) {
       const result = await requestSignUp(username, email, password);
       callback?.(result);
+    },
+    logout() {
+      this.name = '';
+      LocalStorage.removeItem('user');
+      Notify.create({
+        type: 'positive',
+        position: 'top-right',
+        message: 'Bye bye',
+      });
     },
   },
 });

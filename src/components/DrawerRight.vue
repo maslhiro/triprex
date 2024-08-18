@@ -53,7 +53,7 @@
             :key="tour.name"
             class="tour-card"
             :style="{
-              'background-image': `url(${tour.image})`,
+              'background-image': `url(${tour.name})`,
             }"
           >
             <q-card-section class="flex justify-end">
@@ -103,6 +103,8 @@
 import { useQuasar } from 'quasar';
 import { computed, ref } from 'vue';
 import ExtraInfo from './ExtraInfo.vue';
+import { useDestinationStore } from 'src/stores/destination';
+import { Destination } from 'src/types';
 
 const q = useQuasar();
 
@@ -113,13 +115,6 @@ defineOptions({
 interface TourType {
   title: string;
   icon: string;
-  href: string;
-}
-
-interface DestinationType {
-  name: string;
-  desc: string;
-  image: string;
   href: string;
 }
 
@@ -135,11 +130,14 @@ export interface Props {
   tourTitle: string;
   tourData: TourType[];
   destinationTitle: string;
-  destinationData: DestinationType[];
   contact: ContactInformation[];
 }
 
 const carousel = ref(1);
+
+const destinationStore = useDestinationStore();
+
+const destinationList: Destination[] = [];
 
 const props = withDefaults(defineProps<Props>(), {
   visible: false,
@@ -156,14 +154,14 @@ const width = computed(() =>
   q.screen?.width / 2 > DEFAULT_WIDTH_1 ? DEFAULT_WIDTH_1 : DEFAULT_WIDTH_2
 );
 const carouselData = computed(() => {
-  let result: DestinationType[][] = [];
-  for (let i = 0; i < props.destinationData.length; i++) {
+  let result: Destination[][] = [];
+  for (let i = 0; i < destinationList.length; i++) {
     if (i != 0 && result[result.length - 1].length != 2) {
       result[result.length - 1].push(props.destinationData[i]);
     } else result.push([props.destinationData[i]]);
   }
-
   console.log(result);
+  console.log(destinationList);
   return result;
 });
 </script>

@@ -34,7 +34,7 @@
         {
           title: 'DESTINATION',
           submenu: [
-            { title: 'DESTINATION 1', href: '' },
+            { title: 'DESTINATION 1', href: 'destination' },
             { title: 'DESTINATION 2', href: '' },
             { title: 'DESTINATION 3', href: '' },
             { title: 'DESTINATION 4', href: '' },
@@ -95,50 +95,6 @@
         {
           title: 'luxury tours',
           icon: 'luxury_tour.svg',
-          href: '',
-        },
-      ]"
-      :destination-data="[
-        {
-          name: 'India',
-          desc: '5 tour',
-          image:
-            'https://triprex.b-cdn.net/wp-content/uploads/2024/02/Destination-09.webp',
-          href: '',
-        },
-        {
-          name: 'Brazil',
-          desc: '5 tour',
-          image:
-            'https://triprex.b-cdn.net/wp-content/uploads/2024/02/Destination-08.webp',
-          href: '',
-        },
-        {
-          name: 'India',
-          desc: '5 tour',
-          image:
-            'https://triprex.b-cdn.net/wp-content/uploads/2024/02/Destination-07.webp',
-          href: '',
-        },
-        {
-          name: 'Australia',
-          desc: '5 tour',
-          image:
-            'https://triprex.b-cdn.net/wp-content/uploads/2024/02/Destination-06.webp',
-          href: '',
-        },
-        {
-          name: 'Sweden',
-          desc: '5 tour',
-          image:
-            'https://triprex.b-cdn.net/wp-content/uploads/2024/02/Destination-05.webp',
-          href: '',
-        },
-        {
-          name: 'Japan',
-          desc: '5 tour',
-          image:
-            'https://triprex.b-cdn.net/wp-content/uploads/2024/02/Destination-04.webp',
           href: '',
         },
       ]"

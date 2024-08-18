@@ -18,6 +18,7 @@
           clickable
           style="min-width: 200px"
           v-for="item in subMenu"
+          @click="() => router.push(item.href)"
           :key="item.href"
         >
           {{ item.title }}
@@ -30,7 +31,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { debounce } from 'quasar';
+import { useRouter } from 'vue-router';
+
 import { SubMenu } from '../types';
+
+const router = useRouter();
 
 defineOptions({
   name: 'MenuHover',
