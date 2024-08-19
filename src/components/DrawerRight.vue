@@ -46,33 +46,15 @@
           :key="index"
           :name="index"
         >
-          <q-card
+          <destination-card
             v-for="tour in item"
             :key="tour.name"
             class="tour-card"
-            :style="{
-              'background-image': `url(${tour.image})`,
-            }"
-          >
-            <q-card-section class="flex justify-end">
-              <div
-                class="text-caption text-bold q-px-sm q-py-xxs borer text-dark bg-secondary"
-                style="border-radius: 4px"
-              >
-                {{ tour.desc }}
-              </div>
-            </q-card-section>
-            <q-space />
-
-            <div class="absolute-bottom q-pa-md">
-              <div class="text-subtitle2 text-secondary text-bold">
-                Travel to
-              </div>
-              <div class="text-h5 text-white text-weight-bold">
-                {{ tour.name }}
-              </div>
-            </div>
-          </q-card>
+            :name="tour.name"
+            :image="tour.image"
+            :desc="tour.desc"
+            :href="tour.href"
+          />
         </q-carousel-slide>
       </q-carousel>
       <div class="q-px-md q-mt-lg row justify-between">
@@ -101,6 +83,7 @@
 import { useQuasar } from 'quasar';
 import { computed, ref } from 'vue';
 import ExtraInfo from './ExtraInfo.vue';
+import DestinationCard from './DestinationCard.vue';
 import { useDestinationStore } from 'src/stores/destination';
 import { Destination } from 'src/types';
 
