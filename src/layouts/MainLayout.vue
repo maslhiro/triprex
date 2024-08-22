@@ -35,9 +35,9 @@
           title: 'DESTINATION',
           href: 'destination',
           submenu: [
-            { title: 'DESTINATION 1', href: 'destination' },
-            { title: 'DESTINATION 2', href: 'destination' },
-            { title: 'DESTINATION 3', href: 'destination' },
+            { title: 'INDIA', href: 'destination/india' },
+            { title: 'BRAZIL', href: 'destination/brazil' },
+            { title: 'INDONESIA', href: 'destination/indonesia' },
             { title: 'DESTINATION 4', href: 'destination' },
             { title: 'DESTINATION 5', href: 'destination' },
             { title: 'DESTINATION 6', href: 'destination' },

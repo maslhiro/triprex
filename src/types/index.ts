@@ -9,3 +9,17 @@ export interface Destination {
   image: string;
   href: string;
 }
+
+export interface Location {
+  name: string;
+  image: string[];
+}
+
+export interface DestinationDetail {
+  name: string;
+  population: string;
+  language: string;
+  currency: string;
+  body: string;
+  location: Location[];
+}

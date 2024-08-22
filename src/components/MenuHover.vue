@@ -21,7 +21,7 @@
           clickable
           style="min-width: 200px"
           v-for="item in subMenu"
-          @click="() => router.push(item.href)"
+          @click="() => router.push({ path: item.href, replace: true })"
           :key="item.href"
         >
           {{ item.title }}
@@ -76,7 +76,7 @@ function mouseLeave() {
 
 const onMenuClick = () => {
   if (props?.href) {
-    router.push(props.href);
+    router.push({ path: props.href, replace: true });
   }
 };
 </script>

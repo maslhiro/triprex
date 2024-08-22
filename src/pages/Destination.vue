@@ -60,7 +60,7 @@ const paginatedData = computed(() =>
 
 .destination-card {
   width: 70%;
-  height: 500px;
+  height: 400px;
 }
 
 @media (min-width: $xs-breakpoint) {
