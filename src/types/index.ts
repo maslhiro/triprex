@@ -17,6 +17,7 @@ export interface Location {
 
 export interface DestinationDetail {
   name: string;
+  capitalCity: string;
   population: string;
   language: string;
   currency: string;

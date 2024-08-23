@@ -1,5 +1,5 @@
 import { Destination, DestinationDetail } from 'src/types';
-import MockData from './destination.json';
+import MockData from './destinationMockData';
 
 export const fetchAll = (): Promise<Destination[]> =>
   new Promise((resolve) => {
@@ -10,14 +10,8 @@ export const fetchAll = (): Promise<Destination[]> =>
 
 export const getDetails = (id: string): Promise<DestinationDetail> =>
   new Promise((resolve) => {
+    const data = MockData.details[id];
     setTimeout(() => {
-      resolve({
-        name: MockData.details.name,
-        population: MockData.details.population,
-        language: MockData.details.language,
-        currency: MockData.details.currency,
-        location: [],
-        body: MockData.details.body,
-      });
+      resolve(data);
     }, 200);
   });

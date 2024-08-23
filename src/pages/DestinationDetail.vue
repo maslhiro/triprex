@@ -1,12 +1,37 @@
 <template>
   <header-cover :title="id" root="Destination" />
   <div class="container content">
-    <div class="row q-col-gutter-x-md" style="min-height: 100px">
+    <div
+      class="row q-col-gutter-x-md q-col-gutter-y-md"
+      style="min-height: 100px"
+    >
       <div class="col-lg-8 detail-body" v-html="data?.body"></div>
-      <div class="col-lg-4">
+      <div class="col-lg-4 col">
         <div class="destination-info">
           <span>Destination</span>
-          <div class="single-info">dkjsalkdksa</div>
+          <div class="text-h6 text-weight-bolder q-pb-sm">
+            {{ data?.name }}
+          </div>
+          <q-separator />
+          <span>Population</span>
+          <div class="text-h6 text-weight-bolder q-pb-sm">
+            {{ data?.population }}
+          </div>
+          <q-separator />
+          <span>Capital City</span>
+          <div class="text-h6 text-weight-bolder q-pb-sm">
+            {{ data?.capitalCity }}
+          </div>
+          <q-separator />
+          <span>Language</span>
+          <div class="text-h6 text-weight-bolder q-pb-sm">
+            {{ data?.language }}
+          </div>
+          <q-separator />
+          <span>Currency</span>
+          <div class="text-h6 text-weight-bolder q-pb-sm">
+            {{ data?.currency }}
+          </div>
         </div>
       </div>
     </div>
@@ -33,7 +58,6 @@ const data = ref<DestinationDetail>();
 
 const fetchData = async () => {
   data.value = await getDetails(id.value);
-  console.log('NIV::', data.value);
 };
 
 watch(() => route.params.id, fetchData, { immediate: true });
@@ -47,13 +71,28 @@ watch(() => route.params.id, fetchData, { immediate: true });
 }
 
 .destination-info {
+  position: relative;
+  display: flex;
+  flex-direction: column;
   border-radius: 5px;
   border: 1px solid rgba(16, 12, 8, 0.1);
   background: #fff;
-  padding: 30px;
+  padding: 20px;
 }
 
-.single-info .span::after {
+.destination-info span {
+  position: relative;
+  padding-left: 24px;
+  color: gray;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 35px;
+  letter-spacing: 0.48px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.destination-info span::after {
   content: '';
   height: 15px;
   width: 15px;
@@ -65,7 +104,24 @@ watch(() => route.params.id, fetchData, { immediate: true });
   transform: translateY(-50%);
 }
 
+.destination-info span::before {
+  content: '';
+  height: 11px;
+  width: 11px;
+  border-radius: 50%;
+  background-color: var(--q-primary);
+  position: absolute;
+  left: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .detail-body ::v-deep h2 {
+  font-weight: 600;
+  margin-top: 0;
+}
+
+.detail-body ::v-deep h3 {
   font-weight: 600;
 }
 
