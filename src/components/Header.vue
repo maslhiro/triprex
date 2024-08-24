@@ -9,7 +9,7 @@
           :title="item.title"
           :sub-menu="item.submenu"
           :href="item.href"
-          style="z-index: 100000"
+          style="z-index: 99"
         />
       </div>
       <div class="flex-center content-center row">

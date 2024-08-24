@@ -33,15 +33,15 @@
         },
         {
           title: 'DESTINATION',
-          href: 'destination',
+          href: '/destination',
           submenu: [
-            { title: 'INDIA', href: 'destination/india' },
-            { title: 'BRAZIL', href: 'destination/brazil' },
-            { title: 'INDONESIA', href: 'destination/indonesia' },
-            { title: 'DESTINATION 4', href: 'destination' },
-            { title: 'DESTINATION 5', href: 'destination' },
-            { title: 'DESTINATION 6', href: 'destination' },
-            { title: 'DESTINATION DETAIL', href: 'destination' },
+            { title: 'INDIA', href: '/destination/india' },
+            { title: 'BRAZIL', href: '/destination/brazil' },
+            { title: 'INDONESIA', href: '/destination/indonesia' },
+            { title: 'DESTINATION 4', href: '/destination' },
+            { title: 'DESTINATION 5', href: '/destination' },
+            { title: 'DESTINATION 6', href: '/destination' },
+            { title: 'DESTINATION DETAIL', href: '/destination' },
           ],
         },
         {
@@ -65,51 +65,19 @@
       :visible="drawerRightVisible"
       @close="drawerRightVisible = !drawerRightVisible"
       tourTitle="Tour Style"
-      destination-title="Our Destinations"
+      destination-title="Our
+    Destinations"
       :tour-data="[
-        {
-          title: 'adventure tours',
-          icon: 'adventure_tour.svg',
-          href: '',
-        },
-
-        {
-          title: 'cultural tours',
-          icon: 'cultural_tour.svg',
-          href: '',
-        },
-        {
-          title: 'group tours',
-          icon: 'group_tour.svg',
-          href: '',
-        },
-        {
-          title: 'historical tours',
-          icon: 'historical_tour.svg',
-          href: '',
-        },
-        {
-          title: 'honey moon tours',
-          icon: 'honeymoon_tour.svg',
-          href: '',
-        },
-        {
-          title: 'luxury tours',
-          icon: 'luxury_tour.svg',
-          href: '',
-        },
+        { title: 'adventure tours', icon: 'adventure_tour.svg', href: '' },
+        { title: 'cultural tours', icon: 'cultural_tour.svg', href: '' },
+        { title: 'group tours', icon: 'group_tour.svg', href: '' },
+        { title: 'historical tours', icon: 'historical_tour.svg', href: '' },
+        { title: 'honey moon tours', icon: 'honeymoon_tour.svg', href: '' },
+        { title: 'luxury tours', icon: 'luxury_tour.svg', href: '' },
       ]"
       :contact="[
-        {
-          title: 'More Inquiry',
-          icon: 'phone',
-          desc: '+999-858 624 984',
-        },
-        {
-          title: 'Send Mail',
-          icon: 'mail',
-          desc: 'info@example.com',
-        },
+        { title: 'More Inquiry', icon: 'phone', desc: '+999-858 624 984' },
+        { title: 'Send Mail', icon: 'mail', desc: 'info@example.com' },
       ]"
     />
 

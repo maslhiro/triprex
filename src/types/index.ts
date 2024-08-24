@@ -12,7 +12,7 @@ export interface Destination {
 
 export interface Location {
   name: string;
-  image: string[];
+  images: string[];
 }
 
 export interface DestinationDetail {

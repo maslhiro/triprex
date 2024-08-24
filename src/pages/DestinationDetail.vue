@@ -35,10 +35,15 @@
         </div>
       </div>
     </div>
+
+    <h3 class="text-weight-bold">{{ data?.name }} Location.</h3>
+    <image-gallery :data="data?.location" />
   </div>
+
   <div style="width: 100%; min-height: 20em"></div>
 </template>
 <script setup lang="ts">
+import ImageGallery from 'src/components/ImageGallery.vue';
 import HeaderCover from 'src/components/HeaderCover.vue';
 import DestinationCard from 'src/components/DestinationCard.vue';
 import { computed, ref, watch } from 'vue';

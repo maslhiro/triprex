@@ -43,7 +43,7 @@ const props = withDefaults(defineProps<Destination>(), {
 });
 
 const onClick = () => {
-  if (props?.href) router.push(props?.href);
+  if (props?.href) router.push({ path: props?.href });
 };
 </script>
 <style lang="scss">

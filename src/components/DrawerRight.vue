@@ -139,8 +139,6 @@ const carouselData = computed(() => {
       result[result.length - 1].push(destinationList[i]);
     } else result.push([destinationList[i]]);
   }
-  console.log(result);
-  console.log(destinationList);
   return result;
 });
 </script>

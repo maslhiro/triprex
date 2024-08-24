@@ -47,3 +47,8 @@ $lg-breakpoint: 1920px;
     max-width: 1440px;
   }
 }
+
+.q-header,
+.q-footer {
+  z-index: 100;
+}
