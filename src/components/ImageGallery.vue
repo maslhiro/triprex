@@ -29,7 +29,7 @@
         data-fancybox="gallery"
         :data-src="item.concat('/1600x1200')"
       >
-        <q-img :src="item.concat('/200x150')" />
+        <q-img class="image" :src="item.concat('/200x150')" />
       </a>
     </div>
   </fancy-box>
@@ -69,14 +69,14 @@ const visibleData = computed(() => props.data?.[currentIndex.value]?.images);
   position: relative;
 }
 
-.zoom-img img {
+.image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
 
-.zoom-img:hover img {
+.image:hover {
   transform: scale(1.01);
 }
 </style>

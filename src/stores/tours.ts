@@ -1,24 +1,23 @@
 import { defineStore } from 'pinia';
 import { LocalStorage } from 'quasar';
-import { fetchAll } from 'src/apis/destination';
-import { Destination } from 'src/types';
+import { fetchAll } from 'src/apis/tours';
+import { Tour } from 'src/types';
 
-export const useDestinationStore = () => {
-  const innerStore = defineStore('destination', {
+export const useTourStore = () => {
+  const innerStore = defineStore('tour', {
     state: () => ({
       isInitialized: false,
-      list: (LocalStorage.getItem('destination-list') || []) as Destination[],
+      list: (LocalStorage.getItem('tour-list') || []) as Tour[],
     }),
     getters: {
-      destinationList: (state) => state.list,
-      ourDestination: (state) => state.list?.slice(0, 10),
+      recommend: (state) => state.list?.slice(0, 10),
     },
     actions: {
       async fetchAll(callback?: () => void) {
         const result = await fetchAll();
         this.list = result;
         this.isInitialized = true;
-        LocalStorage.setItem('destination-list', this.list);
+        LocalStorage.setItem('tour-list', this.list);
         callback?.();
       },
     },

@@ -18,6 +18,7 @@
         { title: 'ABOUT' },
         {
           title: 'TOURS',
+          href: '/tours',
           submenu: [
             {
               title: 'PACKAGE GRID',

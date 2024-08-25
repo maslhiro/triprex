@@ -24,3 +24,13 @@ export interface DestinationDetail {
   body: string;
   location: Location[];
 }
+
+export interface Tour {
+  date: string;
+  location: string;
+  name: string;
+  // href: string;
+  previewImg: string;
+  price: number;
+  originalPrice: number;
+}
