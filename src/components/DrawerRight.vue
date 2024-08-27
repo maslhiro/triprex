@@ -15,14 +15,17 @@
     </div>
 
     <div class="q-py-lg q-px-md">
-      <div class="text-h5 q-pb-lg text-weight-bolder">{{ tourTitle }}</div>
+      <div class="text-h5 q-pb-lg text-weight-bolder">Tour Type</div>
       <div class="row q-col-gutter-lg">
-        <div class="col-4" v-for="item in tourData" :key="item.icon">
-          <q-btn class="q-pa-sm overflow-hidden bg-accent">
+        <div class="col-4" v-for="item in categoryTour" :key="item.icon">
+          <q-btn
+            class="q-pa-sm overflow-hidden bg-accent"
+            :to="`/package-category/`.concat(item.id)"
+          >
             <div class="icon">
               <img :src="item.icon" />
             </div>
-            <div class="text-subtitle2">{{ item.title }}</div>
+            <div class="text-subtitle2">{{ item.name }}</div>
           </q-btn>
         </div>
       </div>
@@ -85,7 +88,8 @@ import { computed, ref } from 'vue';
 import ExtraInfo from './ExtraInfo.vue';
 import DestinationCard from './DestinationCard.vue';
 import { useDestinationStore } from 'src/stores/destination';
-import { Destination } from 'src/types';
+import { Category, Destination } from 'src/types';
+import { useCategoryStore } from 'src/stores/category';
 
 const q = useQuasar();
 
@@ -108,23 +112,20 @@ interface ContactInformation {
 export interface Props {
   visible: boolean;
   onClose: () => void;
-  tourTitle: string;
-  tourData: TourType[];
-  destinationTitle: string;
   contact: ContactInformation[];
 }
 
 const carousel = ref(1);
 
 const destinationStore = useDestinationStore();
+const categoryStore = useCategoryStore();
 
 const destinationList: Destination[] = destinationStore.ourDestination;
+const categoryTour: Category[] = categoryStore.recommend;
 
 const props = withDefaults(defineProps<Props>(), {
   visible: false,
   onClose: () => null,
-  tourTitle: '',
-  tourData: () => [],
 });
 
 const DEFAULT_WIDTH_1 = 500;

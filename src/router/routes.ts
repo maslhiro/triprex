@@ -26,6 +26,14 @@ const routes: RouteRecordRaw[] = [
         path: 'tours',
         component: () => import('pages/PackageGrid.vue'),
       },
+      {
+        path: 'package-grid',
+        component: () => import('pages/PackageGrid.vue'),
+      },
+      {
+        path: 'package-category',
+        component: () => import('pages/PackageCategory.vue'),
+      },
     ],
   },
   {

@@ -26,11 +26,19 @@ export interface DestinationDetail {
 }
 
 export interface Tour {
+  id: string;
   date: string;
   location: string;
   name: string;
-  // href: string;
+  href: string;
   previewImg: string;
   price: number;
   originalPrice: number;
+  category: Category[];
+}
+
+export interface Category {
+  id: string;
+  name: string;
+  icon: string;
 }

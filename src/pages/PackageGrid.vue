@@ -52,37 +52,4 @@ const paginatedData = computed(() =>
   margin-top: 100px;
   margin-bottom: 100px;
 }
-
-.destination-card {
-  width: 70%;
-  height: 400px;
-}
-
-@media (min-width: $xs-breakpoint) {
-  .destination-card {
-    width: 45%;
-    height: 350px;
-  }
-}
-
-@media (min-width: $sm-breakpoint) {
-  .destination-card {
-    width: 30%;
-    height: 350px;
-  }
-}
-
-@media (min-width: $md-breakpoint) {
-  .destination-card {
-    width: 22%;
-    height: 350px;
-  }
-}
-
-@media (min-width: $lg-breakpoint) {
-  .destination-card {
-    width: 20%;
-    height: 350px;
-  }
-}
 </style>
