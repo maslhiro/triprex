@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <q-card>
+  <div class="flex flex-center">
+    <q-card style="max-width: 400px">
       <div class="q-mt-lg col wrap location-container">
         <q-btn color="black" square :label="data?.date" />
         <q-space />

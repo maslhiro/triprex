@@ -24,12 +24,18 @@
               title: 'PACKAGE GRID',
               href: '/package-grid',
             },
-            { title: 'PACKAGE SIDEBAR', href: '' },
+            {
+              title: 'PACKAGE SIDEBAR',
+              href: '/package-sidebar',
+            },
             {
               title: 'PACKAGE CATEGORY',
               href: '/package-category',
             },
-            { title: 'PACKAGE DETAIL', href: '' },
+            {
+              title: 'PACKAGE DETAIL',
+              href: '',
+            },
           ],
         },
         {

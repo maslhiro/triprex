@@ -31,6 +31,7 @@ withDefaults(defineProps<Props>(), {
 </script>
 <style scoped lang="scss">
 .bg-container {
+  background-size: cover;
   background-image: linear-gradient(
       270deg,
       rgba(0, 0, 0, 0.3),

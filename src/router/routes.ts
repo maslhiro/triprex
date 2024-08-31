@@ -34,6 +34,10 @@ const routes: RouteRecordRaw[] = [
         path: 'package-category',
         component: () => import('pages/PackageCategory.vue'),
       },
+      {
+        path: 'package-sidebar',
+        component: () => import('pages/PackageSideBar.vue'),
+      },
     ],
   },
   {
