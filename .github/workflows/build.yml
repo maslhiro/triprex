@@ -1,33 +1,30 @@
-name: Build & Deploy
+name: Deploy to GitHub Pages
+
 on:
   push:
     branches:
-      - master
+      - main # or the branch you want to trigger deployment from
+
 jobs:
-  build:
-    runs-on: ubuntu-18.04
+  deploy:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Setup Node
-        uses: actions/setup-node@v1
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: '10.x'
-      - name: Cache
-        uses: actions/cache@v1
+          node-version: '16' # Specify your Node.js version
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the app
+        run: quasar build
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - name: Install
-        run: npm ci
-      - name: Build
-        run: npm run build
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BASE_BRANCH: master
-          BRANCH: gh-pages
-          FOLDER: dist/spa
+          folder: dist/spa # Directory with your built app
+          token: ${{ secrets.GITHUB_TOKEN }}
