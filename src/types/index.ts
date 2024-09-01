@@ -37,8 +37,42 @@ export interface Tour {
   category: Category[];
 }
 
+interface Itinerary {
+  name: string;
+  description: string;
+}
+
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface Video {
+  source: string;
+  preview: string;
+}
+
+export interface TourDetail extends Tour {
+  description: string;
+  maxPeople: number;
+  included: string[];
+  excluded: string[];
+  highlights: string[];
+  itinerary: Itinerary[];
+  faq: FAQ[];
+  photos: string[];
+  videos: Video[];
+}
+
 export interface Category {
   id: string;
   name: string;
   icon: string;
+}
+
+export interface GalleryItem {
+  src: string;
+  class: 'horizontal' | 'big' | 'vertical';
+  type: 'image' | 'video';
+  preview?: string;
 }

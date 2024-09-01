@@ -1,6 +1,8 @@
 <template>
   <q-img class="bg-container" no-native-menu height="25em">
-    <div class="absolute-center cursor-pointer bg-transparent text-transform">
+    <div
+      class="absolute-center cursor-pointer bg-transparent text-transform window-width non-selectable"
+    >
       <div class="text-h2 text-center text-weight-bold">
         {{ title }}
       </div>
@@ -32,6 +34,7 @@ withDefaults(defineProps<Props>(), {
 <style scoped lang="scss">
 .bg-container {
   background-size: cover;
+  background-position: center center;
   background-image: linear-gradient(
       270deg,
       rgba(0, 0, 0, 0.3),

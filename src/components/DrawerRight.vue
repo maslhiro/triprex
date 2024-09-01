@@ -20,7 +20,7 @@
         <div class="col-4" v-for="item in categoryTour" :key="item.icon">
           <q-btn
             class="q-pa-sm overflow-hidden bg-accent"
-            :to="`/package-category/`.concat(item.id)"
+            :to="`/package-category/`"
           >
             <div class="icon">
               <img :src="item.icon" />
@@ -62,7 +62,9 @@
       </q-carousel>
       <div class="q-px-md q-mt-lg row justify-between">
         <img src="sidebar-prev.svg" fit="contain" ratio="1" />
-        <q-btn push color="primary" rounded no-caps>View All</q-btn>
+        <q-btn push color="primary" rounded no-caps to="/destination">
+          View All
+        </q-btn>
         <img src="sidebar-next.svg" fit="contain" ratio="1" />
       </div>
     </div>

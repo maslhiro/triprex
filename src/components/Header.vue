@@ -1,6 +1,6 @@
 <template>
   <q-header elevated>
-    <div class="row content bg-white text-dark">
+    <div class="row content bg-white text-dark non-selectable">
       <img src="logo.svg" height="40px" fit="contain" ratio="1" />
       <div class="gt-md col row flex-center">
         <menu-hover
