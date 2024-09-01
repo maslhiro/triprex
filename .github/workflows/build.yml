@@ -24,7 +24,7 @@ jobs:
         run: npm run build
 
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: JamesIves/github-pages-deploy-action@v4.6.1
         with:
           folder: dist/spa # Directory with your built app
           token: ${{ secrets.GITHUB_TOKEN }}
