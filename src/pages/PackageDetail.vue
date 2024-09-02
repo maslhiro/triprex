@@ -135,15 +135,16 @@
           </q-expansion-item>
         </div>
       </div>
+
       <div class="col-md-4 col-lg-3 col-12">
         <div class="q-pa-lg bg-accent" style="border-radius: 4px">
-          <div class="text-h5 text-weight-bold text-center">Book Your Tour</div>
+          <div class="text-h6 text-weight-bold text-center">Book Your Tour</div>
           <div class="text text-center q-py-md">
             Reserve your ideal trip early for a hassle-free trip; secure comfort
             and convenience!
           </div>
           <q-separator />
-          <div class="q-py-md row justify-evenly" style="display: flex">
+          <q-btn-group spread class="q-my-md">
             <q-btn
               no-caps
               :color="type == 'booking' ? 'primary' : 'default'"
@@ -160,8 +161,8 @@
             >
               Inquiry Form
             </q-btn>
-          </div>
-          <booking-form :type="type" />
+          </q-btn-group>
+          <booking-form :type="type" :package-info="data" />
         </div>
       </div>
     </div>
@@ -187,7 +188,7 @@ defineOptions({
 const tourStore = useTourStore();
 const route = useRoute();
 const id = computed(() => route.params.id as string);
-
+const type = ref<'booking' | 'inquiry'>('booking');
 const data = ref<TourDetail>();
 
 const galleryData = computed<GalleryItem[]>(() => {
@@ -224,8 +225,6 @@ const galleryData = computed<GalleryItem[]>(() => {
 
   return [...imageItems, ...videoItems];
 });
-
-const type = ref<'booking' | 'inquiry'>('booking');
 
 const fetchData = async () => {
   data.value = await getDetails(id.value);

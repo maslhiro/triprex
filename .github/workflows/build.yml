@@ -4,7 +4,8 @@ on:
   push:
     branches:
       - main # or the branch you want to trigger deployment from
-
+permissions:
+  contents: write
 jobs:
   deploy:
     runs-on: ubuntu-latest

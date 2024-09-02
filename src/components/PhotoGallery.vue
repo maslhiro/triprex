@@ -63,7 +63,7 @@ span:after {
   border-bottom: 1px solid black;
   padding: 0 0 0.4em 2em; /*top right bottom left*/
   left: -3em;
-  animation: 3s ease-out 0s slideInFromLeft;
+  animation: 0.1s ease-out 0s slideInFromLeft;
 }
 
 .container {
@@ -89,7 +89,7 @@ span:after {
   position: relative;
   padding: 0;
   overflow: hidden;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 .container div img {
   position: absolute;
@@ -126,7 +126,7 @@ span:after {
 
 /* Animation Stuff */
 *:not(a) {
-  animation: 3s ease-out 0s 1 fadeIn;
+  animation: 0.1s ease-out 0s 1 fadeIn;
 }
 @keyframes slideInFromLeft {
   0% {
