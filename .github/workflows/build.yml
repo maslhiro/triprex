@@ -28,5 +28,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.6.1
         with:
           folder: dist/spa # Directory with your built app
-          token: ${{ secrets.GITHUB_TOKEN }}
           ssh-key: ${{ secrets.DEPLOY_KEY }}
