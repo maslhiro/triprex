@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-center">
+  <div class="flex flex-center non-selectable" @click="onClick">
     <q-card style="max-width: 400px">
       <div class="q-mt-lg col wrap location-container">
         <q-btn color="black" square :label="data?.date" />
@@ -52,6 +52,7 @@
 </template>
 <script setup lang="ts">
 import { Tour } from 'src/types';
+import { useRoute, useRouter } from 'vue-router';
 
 interface Props {
   data?: Tour;
@@ -61,7 +62,13 @@ defineOptions({
   name: 'PackageGrid',
 });
 
-withDefaults(defineProps<Props>(), {});
+const props = withDefaults(defineProps<Props>(), {});
+
+const route = useRouter();
+
+const onClick = () => {
+  if (props.data) route.push(props?.data?.href);
+};
 </script>
 <style scoped lang="scss">
 .location-container {

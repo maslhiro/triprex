@@ -1,15 +1,14 @@
 <template>
-  <header-cover :title="data.name" />
+  <header-cover :title="data?.name" />
   <div class="container content">
     <photo-gallery class="q-my-lg" :data="galleryData" />
-
     <div class="row">
-      <div class="col-md-8 col-12 column q-gutter-y-lg">
+      <div class="col-md-8 col-lg-9 col-12 column q-gutter-y-lg q-pr-sm">
         <div class="text-h4 text-weight-bolder text-primary">
           <span
-            >${{ data.price }}
+            >${{ data?.price }}
             <del class="text-h5 text-weight-bolder text-grey"
-              >${{ data.originalPrice }}</del
+              >${{ data?.originalPrice }}</del
             ></span
           >/<span class="text-body1 text-black">Per Person</span>
         </div>
@@ -18,27 +17,27 @@
           <div class="row items-center">
             <q-icon name="schedule" size="1.5rem" color="primary" />
             <div class="q-ml-sm text-subtitle1 text-weight-bold">
-              {{ data.date }}
+              {{ data?.date }}
             </div>
           </div>
 
           <div class="row items-center">
             <q-icon name="group" size="1.5rem" color="primary" />
             <div class="q-ml-sm text-subtitle1 text-weight-bold">
-              Max People: {{ data.maxPeople }}
+              Max People: {{ data?.maxPeople }}
             </div>
           </div>
 
           <div class="row items-center">
             <q-icon name="map" size="1.5rem" color="primary" />
             <div class="q-ml-sm text-subtitle1 text-weight-bold">
-              {{ data.location }}
+              {{ data?.location }}
             </div>
           </div>
         </div>
 
         <p class="text">
-          {{ data.description }}
+          {{ data?.description }}
         </p>
 
         <div class="text-h5 text-weight-bold">Included and Excluded</div>
@@ -46,7 +45,7 @@
         <div class="row">
           <div class="col-md-6 col include-content">
             <ul>
-              <li class="text" v-for="item in data.included" :key="item">
+              <li class="text" v-for="item in data?.included" :key="item">
                 <i></i> {{ item }}
               </li>
             </ul>
@@ -54,7 +53,7 @@
 
           <div class="col-md-6 col exclude-content">
             <ul>
-              <li class="text" v-for="item in data.excluded" :key="item">
+              <li class="text" v-for="item in data?.excluded" :key="item">
                 <i></i> {{ item }}
               </li>
             </ul>
@@ -65,7 +64,7 @@
 
         <div class="col highlight-content">
           <ul>
-            <li class="text" v-for="item in data.highlights" :key="item">
+            <li class="text" v-for="item in data?.highlights" :key="item">
               <i></i> {{ item }}
             </li>
           </ul>
@@ -75,7 +74,7 @@
 
         <div class="q-gutter-lg">
           <q-expansion-item
-            v-for="(item, index) in data.itinerary"
+            v-for="(item, index) in data?.itinerary"
             :key="item.name"
             expand-separator
           >
@@ -117,7 +116,7 @@
         <div class="text-h5 text-weight-bold">Frequently Asked & Question</div>
         <div class="q-gutter-lg">
           <q-expansion-item
-            v-for="(item, index) in data.faq"
+            v-for="(item, index) in data?.faq"
             :key="item.question"
           >
             <template v-slot:header>
@@ -136,8 +135,35 @@
           </q-expansion-item>
         </div>
       </div>
-
-      <div class="col-md-4 col-12 bg-grey">dasdasd</div>
+      <div class="col-md-4 col-lg-3 col-12">
+        <div class="q-pa-lg bg-accent" style="border-radius: 4px">
+          <div class="text-h5 text-weight-bold text-center">Book Your Tour</div>
+          <div class="text text-center q-py-md">
+            Reserve your ideal trip early for a hassle-free trip; secure comfort
+            and convenience!
+          </div>
+          <q-separator />
+          <div class="q-py-md row justify-evenly" style="display: flex">
+            <q-btn
+              no-caps
+              :color="type == 'booking' ? 'primary' : 'default'"
+              :text-color="type == 'booking' ? 'white' : 'primary'"
+              @click="type = 'booking'"
+            >
+              Online Booking
+            </q-btn>
+            <q-btn
+              no-caps
+              :color="type == 'inquiry' ? 'primary' : 'white'"
+              :text-color="type == 'inquiry' ? 'white' : 'primary'"
+              @click="type = 'inquiry'"
+            >
+              Inquiry Form
+            </q-btn>
+          </div>
+          <booking-form :type="type" />
+        </div>
+      </div>
     </div>
   </div>
 
@@ -146,15 +172,23 @@
 <script setup lang="ts">
 import HeaderCover from 'src/components/HeaderCover.vue';
 import PhotoGallery from 'src/components/PhotoGallery.vue';
-import { computed } from 'vue';
+import BookingForm from 'src/components/BookingForm.vue';
+import { computed, ref, watch } from 'vue';
+import { useRoute } from 'vue-router';
+
 import MockData from 'src/apis/toursMockData';
-import { GalleryItem } from 'src/types';
+import { useTourStore } from 'src/stores/tours';
+import { getDetails } from 'src/apis/tours';
+import { GalleryItem, TourDetail } from 'src/types';
 
 defineOptions({
   name: 'PackageDetail',
 });
+const tourStore = useTourStore();
+const route = useRoute();
+const id = computed(() => route.params.id as string);
 
-const data = computed(() => MockData.details['a1b2c3d4']);
+const data = ref<TourDetail>();
 
 const galleryData = computed<GalleryItem[]>(() => {
   const format = [
@@ -166,8 +200,8 @@ const galleryData = computed<GalleryItem[]>(() => {
     'horizontal',
     'horizontal',
   ];
-  const images = data.value?.photos || [];
-  const videos = data.value?.videos || [];
+  const images = data?.value?.photos || [];
+  const videos = data?.value?.videos || [];
 
   const imageItems = images.map(
     (src, index) =>
@@ -190,6 +224,14 @@ const galleryData = computed<GalleryItem[]>(() => {
 
   return [...imageItems, ...videoItems];
 });
+
+const type = ref<'booking' | 'inquiry'>('booking');
+
+const fetchData = async () => {
+  data.value = await getDetails(id.value);
+};
+
+watch(() => route.params.id, fetchData, { immediate: true });
 </script>
 
 <style scoped lang="scss">
