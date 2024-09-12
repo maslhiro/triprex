@@ -1,5 +1,5 @@
 <template>
-  <div class="row items-center">
+  <div class="row items-center non-selectable">
     <q-icon :name="icon" color="primary" size="1.5rem" />
     <div class="divider q-ml-sm" />
     <div class="q-pl-sm">

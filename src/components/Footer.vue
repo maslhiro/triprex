@@ -115,7 +115,9 @@
   </q-footer>
 </template>
 <script setup lang="ts">
+import { Contact } from 'src/types';
 import Banner from './FooterBanner.vue';
+import { useContactStore } from 'src/stores/contact';
 
 defineOptions({
   name: 'CustomFooter',
@@ -131,12 +133,6 @@ interface SocialInformation {
   icon: string;
 }
 
-interface ContactInformation {
-  title: string;
-  icon?: string;
-  desc: string;
-}
-
 interface Widget {
   title: string;
   tabs: string[];
@@ -145,9 +141,8 @@ interface Widget {
 interface Props {
   title: string;
   btnTitle: string;
-  contact: ContactInformation[];
   widget: Widget;
-  extra: ContactInformation;
+  extra: Contact;
   social: SocialInformation[];
   payment: PaymentInformation;
 }
@@ -165,6 +160,10 @@ withDefaults(defineProps<Props>(), {
     tabs: [],
   }),
 });
+
+const contactStore = useContactStore();
+
+const contact = contactStore.data;
 </script>
 <style lang="scss" scoped>
 @import '../css/app.scss';

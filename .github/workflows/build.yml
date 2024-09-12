@@ -1,31 +1,31 @@
-name: Deploy to GitHub Pages
+# name: Deploy to GitHub Pages
 
-on:
-  push:
-    branches:
-      - main # or the branch you want to trigger deployment from
-permissions:
-  contents: write
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+# on:
+#   push:
+#     branches:
+#       - main # or the branch you want to trigger deployment from
+# permissions:
+#   contents: write
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16' # Specify your Node.js version
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: '16' # Specify your Node.js version
 
-      - name: Install dependencies
-        run: npm install
+#       - name: Install dependencies
+#         run: npm install
 
-      - name: Build the app
-        run: npm run build
+#       - name: Build the app
+#         run: npm run build
 
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4.6.1
-        with:
-          folder: dist/spa # Directory with your built app
-          ssh-key: ${{ secrets.DEPLOY_KEY }}
+#       - name: Deploy to GitHub Pages
+#         uses: JamesIves/github-pages-deploy-action@v4.6.1
+#         with:
+#           folder: dist/spa # Directory with your built app
+#           ssh-key: ${{ secrets.DEPLOY_KEY }}

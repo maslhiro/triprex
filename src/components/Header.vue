@@ -13,8 +13,15 @@
         />
       </div>
       <div class="flex-center content-center row">
-        <q-btn flat round icon="account_circle" @click="onProfileClick" />
-        <q-btn flat icon="widgets" @click="onMenuClick" />
+        <q-btn class="lt-lg" flat icon="menu" @click="onMenuClick" />
+        <q-btn
+          class="gt-md"
+          flat
+          round
+          icon="account_circle"
+          @click="onProfileClick"
+        />
+        <q-btn flat icon="widgets" @click="onWidgetClick" />
         <extra-info
           :title="contact?.title"
           :desc="contact?.desc"
@@ -27,31 +34,27 @@
 </template>
 <script setup lang="ts">
 import MenuHover from 'src/components/MenuHover.vue';
-import { SubMenu } from 'src/types';
+import { Menu } from 'src/types';
 import ExtraInfo from './ExtraInfo.vue';
+import { useContactStore } from 'src/stores/contact';
 defineOptions({
   name: 'CustomHeader',
 });
 
-interface MenuItem {
-  title: string;
-  submenu?: SubMenu[];
-  href?: string;
-}
-
 interface Props {
-  data: MenuItem[];
-  contact?: {
-    title: string;
-    desc: string;
-  };
+  data: Menu[];
   onProfileClick?: () => void;
   onMenuClick?: () => void;
+  onWidgetClick?: () => void;
 }
 
 withDefaults(defineProps<Props>(), {
   data: () => [],
 });
+
+const contactStore = useContactStore();
+
+const contact = contactStore.phone;
 </script>
 
 <style scoped lang="scss">

@@ -1,7 +1,7 @@
 <template>
   <div class="q-px-md" @mouseover="mouseOver" @mouseleave="mouseLeave">
     <div
-      class="text-subtitle1 title-hover cursor-pointer text-weight-medium"
+      class="text-subtitle1 title-hover cursor-pointer text-weight-medium non-selectable"
       @click="onMenuClick"
     >
       {{ title }}
@@ -17,7 +17,7 @@
     >
       <q-list>
         <div
-          class="text-subtitle2 title-hover cursor-pointer q-pa-md"
+          class="text-subtitle2 title-hover cursor-pointer q-pa-m non-selectable"
           clickable
           style="min-width: 200px"
           v-for="item in subMenu"

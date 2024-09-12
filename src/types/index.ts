@@ -3,6 +3,12 @@ export interface SubMenu {
   href: string;
 }
 
+export interface Menu {
+  title: string;
+  submenu?: SubMenu[];
+  href?: string;
+}
+
 export interface Destination {
   name: string;
   desc: string;
@@ -75,4 +81,10 @@ export interface GalleryItem {
   class: 'horizontal' | 'big' | 'vertical';
   type: 'image' | 'video';
   preview?: string;
+}
+
+export interface Contact {
+  title: string;
+  icon?: string;
+  desc: string;
 }

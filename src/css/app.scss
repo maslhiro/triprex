@@ -54,6 +54,12 @@ $lg-breakpoint: 1920px;
 }
 
 .q-item {
+  .q-focus-helper {
+    visibility: hidden;
+  }
+}
+
+.q-item {
   padding: 0 0;
 }
 

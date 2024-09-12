@@ -90,8 +90,9 @@ import { computed, ref } from 'vue';
 import ExtraInfo from './ExtraInfo.vue';
 import DestinationCard from './DestinationCard.vue';
 import { useDestinationStore } from 'src/stores/destination';
-import { Category, Destination } from 'src/types';
+import { Category, Contact, Destination } from 'src/types';
 import { useCategoryStore } from 'src/stores/category';
+import { useContactStore } from 'src/stores/contact';
 
 const q = useQuasar();
 
@@ -105,23 +106,18 @@ interface TourType {
   href: string;
 }
 
-interface ContactInformation {
-  title: string;
-  icon?: string;
-  desc: string;
-}
-
 export interface Props {
   visible: boolean;
   onClose: () => void;
-  contact: ContactInformation[];
 }
 
 const carousel = ref(1);
 
 const destinationStore = useDestinationStore();
 const categoryStore = useCategoryStore();
+const contactStore = useContactStore();
 
+const contact: Contact[] = [contactStore.email, contactStore.phone];
 const destinationList: Destination[] = destinationStore.ourDestination;
 const categoryTour: Category[] = categoryStore.recommend;
 
