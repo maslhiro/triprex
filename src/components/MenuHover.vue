@@ -17,7 +17,7 @@
     >
       <q-list>
         <div
-          class="text-subtitle2 title-hover cursor-pointer q-pa-m non-selectable"
+          class="text-subtitle2 title-hover cursor-pointer q-pa-md non-selectable"
           clickable
           style="min-width: 200px"
           v-for="item in subMenu"

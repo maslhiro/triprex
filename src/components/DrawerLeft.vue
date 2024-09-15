@@ -6,7 +6,13 @@
     </div>
 
     <q-list class="q-px-md">
-      <q-item clickable v-close-popup v-for="item in menu" :key="item.title">
+      <q-item
+        clickable
+        v-close-popup
+        v-for="item in menu"
+        :key="item.title"
+        :to="item.href"
+      >
         <q-item-section>
           <div class="text-subtitle1 text-weight-medium text-hover">
             {{ item.title }}
@@ -15,38 +21,24 @@
         <q-item-section side v-if="item?.submenu">
           <q-icon name="keyboard_arrow_right" v-if="item?.submenu" />
         </q-item-section>
-      </q-item>
 
-      <q-item clickable v-close-popup>
-        <q-item-section>New</q-item-section>
-      </q-item>
-      <!-- <q-item clickable>
-        <q-item-section>Preferences</q-item-section>
-        <q-item-section side>
-          <q-icon name="keyboard_arrow_right" />
-        </q-item-section>
-
-        <q-menu anchor="top end" self="top start">
-          <q-list>
-            <q-item v-for="n in 3" :key="n" dense clickable>
-              <q-item-section>Submenu Label</q-item-section>
-              <q-item-section side>
-                <q-icon name="keyboard_arrow_right" />
-              </q-item-section>
-              <q-menu auto-close anchor="top end" self="top start">
-                <q-list>
-                  <q-item v-for="n in 3" :key="n" dense clickable>
-                    <q-item-section>3rd level Label</q-item-section>
-                  </q-item>
-                </q-list>
-              </q-menu>
+        <q-menu v-if="item?.submenu" anchor="top end" self="top start">
+          <q-list class="q-px-md">
+            <q-item
+              v-for="subItem in item.submenu"
+              :key="subItem.title"
+              :to="subItem.href"
+              clickable
+              v-close-popup
+            >
+              <q-item-section>
+                <div class="text-subtitle1 text-weight-medium text-hover">
+                  {{ subItem.title }}
+                </div></q-item-section
+              >
             </q-item>
           </q-list>
         </q-menu>
-      </q-item>
-      <q-separator /> -->
-      <q-item clickable v-close-popup>
-        <q-item-section>Quit</q-item-section>
       </q-item>
     </q-list>
 
@@ -67,10 +59,7 @@
 import { useQuasar } from 'quasar';
 import { computed, ref } from 'vue';
 import ExtraInfo from './ExtraInfo.vue';
-import DestinationCard from './DestinationCard.vue';
-import { useDestinationStore } from 'src/stores/destination';
-import { Category, Contact, Destination, Menu } from 'src/types';
-import { useCategoryStore } from 'src/stores/category';
+import { Contact, Menu } from 'src/types';
 import { useContactStore } from 'src/stores/contact';
 
 const q = useQuasar();
