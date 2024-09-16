@@ -88,3 +88,10 @@ export interface Contact {
   icon?: string;
   desc: string;
 }
+
+export interface Slide {
+  img: string;
+  title: string;
+  desc: string;
+  location: string;
+}

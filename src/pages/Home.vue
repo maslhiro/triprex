@@ -1,101 +1,117 @@
 <template>
   <div class="q-pa-md">
-    <q-carousel animated v-model="slide" arrows infinite height="500px">
-      <q-carousel-slide
-        :name="1"
-        style="
-          background-image: linear-gradient(
-              180deg,
-              rgba(16, 12, 8, 0.4) 0%,
-              rgba(16, 12, 8, 0.4) 100%
-            ),
-            url(home_slider_1.jpg);
-          background-position: center;
-          justify-content: center;
-          align-items: center;
-          display: flex;
-          flex-direction: column;
-        "
-        class="text-white"
+    <div style="border-radius: 24px; overflow: hidden">
+      <q-carousel
+        animated
+        v-model="slide"
+        arrows
+        infinite
+        autoplay
+        height="700px"
+        transition-prev="slide-right"
+        transition-next="slide-left"
       >
-        <div class="container text-center non-selectable flex column">
-          <div
-            style="
-              background-image: url('banner_batch_bg.svg');
-              mask-repeat: no-repeat;
-              mask-position: center;
-              mask-size: contain;
+        <home-slide
+          :name="1"
+          :data="{
+            img: 'home_slider_1.jpg',
+            location: 'Italy',
+            title: `Let's Explore Your Holiday Trip.`,
+            desc: `Life is unpredictable, and we understand that plans might change. Enjoy flexible booking options, so you can reschedule or modify your trip with ease.`,
+          }"
+        />
+        <home-slide
+          :name="2"
+          :data="{
+            img: 'home_slider_2.jpg',
+            location: 'Spain',
+            title: `Let's journey and discover a place.`,
+            desc: `Life is unpredictable, and we understand that plans might change. Enjoy flexible booking options, so you can reschedule or modify your trip with ease.`,
+          }"
+        />
 
-              -webkit-mask-image: url('banner_batch_bg.svg');
-              -webkit-mask-position: center;
-              -webkit-mask-repeat: no-repeat;
-              -webkit-mask-size: contain;
+        <home-slide
+          :name="3"
+          :data="{
+            img: 'home_slider_3.jpg',
+            location: 'France',
+            title: `Lets trek and venture to a spot.`,
+            desc: `Life is unpredictable, and we understand that plans might change. Enjoy flexible booking options, so you can reschedule or modify your trip with ease.`,
+          }"
+        />
 
-              display: inline-flex;
-
-              white-space: nowrap;
-              display: inline-flex;
-              margin-bottom: 15px;
-
-              background-color: #fbb03b;
-              /* padding: 30px; */
-            "
-            class="q-pa-sm non-selectable text-h5 text-weight-medium justify-center items-center"
-          >
-            <q-icon
-              name="share_location"
-              color="white"
-              size="md"
-              class="q-mr-sm"
-            />
-            Italy
-          </div>
-
-          <div class="text-h2 text-weight-bolder q-py-lg">
-            Let's Explore Your Holiday Trip.
-          </div>
-          <p class="text-subtitle1 text-weight-bold">
-            Life is unpredictable, and we understand that plans might change.
-            Enjoy flexible booking options, so you can reschedule or modify your
-            trip with ease.
-          </p>
-
-          <div class="row self-center items-center">
-            <div>
-              <q-btn color="primary" label="Book A Trip" size="md" no-caps />
-            </div>
-
-            <div class="q-ml-lg q-qa-lg row content-center items-center">
-              <q-icon
-                name="compost"
-                color="white"
-                size="3rem"
-                class="q-mr-sm"
-              />
-              <div class="text-subtitle1 text-weight-bold">
-                <div class="">Tripadvisor</div>
-                <div>5.0/5.0</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </q-carousel-slide>
-
-      <!-- <q-carousel-slide :name="2" img-src="home_slider_2.jpg" />
+        <!-- <q-carousel-slide :name="2" img-src="home_slider_2.jpg" />
       <q-carousel-slide :name="3" img-src="home_slider_3.jpg" /> -->
-    </q-carousel>
+      </q-carousel>
+
+      <div
+        class="col full-width flex bg-accent"
+        style="
+          margin-top: -50px;
+          align-items: flex-start;
+          justify-content: center;
+        "
+      >
+        <q-btn-group push>
+          <q-btn
+            @click="id = item.id"
+            v-for="item in btnGroup"
+            :key="item.id"
+            no-caps
+            :label="item.title"
+            :icon="item.icon"
+            size="lg"
+            :color="item.id == id ? 'primary' : 'accent'"
+            :text-color="item.id == id ? 'white' : 'black'"
+          />
+        </q-btn-group>
+
+        <div style="height: 200px" class="bg-accent"></div>
+      </div>
+    </div>
   </div>
+
   <div style="width: 100%; min-height: 20em"></div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import HomeSlide from 'src/components/HomeSlide.vue';
 
 defineOptions({
   name: 'HomePage',
 });
 
+const btnGroup = [
+  {
+    id: '1',
+    title: 'Tour',
+    icon: 'tour',
+  },
+  {
+    id: '2',
+    title: 'Hotel',
+    icon: 'hotel',
+  },
+  {
+    id: '3',
+    title: 'Visa',
+    icon: 'assured_workload',
+  },
+  {
+    id: '4',
+    title: 'Activities',
+    icon: 'hiking',
+  },
+  {
+    id: '5',
+    title: 'Transport',
+    icon: 'flight_takeoff',
+  },
+];
+
 const slide = ref(1);
+const id = ref('1');
 </script>
 
 <style scoped lang="scss"></style>

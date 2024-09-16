@@ -3,7 +3,7 @@
   <div class="container content">
     <div class="row q-col-gutter-md">
       <package-card
-        class="col-4"
+        class="col-12 col-md-6 col-lg-4"
         v-for="item in paginatedData"
         :key="item.name"
         :data="item"

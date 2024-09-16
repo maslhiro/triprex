@@ -84,7 +84,7 @@
 
       <div class="row q-col-gutter-md">
         <package-card
-          class="col-6"
+          class="col-md-6 col-12"
           v-for="item in paginatedData"
           :key="item.name"
           :data="item"
