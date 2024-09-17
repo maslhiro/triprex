@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md">
-    <div style="border-radius: 24px; overflow: hidden">
+    <div style="border-radius: 24px; overflow: hidden; margin: 0px 42px">
       <q-carousel
         animated
         v-model="slide"
@@ -47,12 +47,19 @@
       <div
         class="col full-width flex bg-accent"
         style="
-          margin-top: -50px;
+          margin-top: -66px;
           align-items: flex-start;
           justify-content: center;
         "
       >
-        <q-btn-group push>
+        <q-btn-group
+          push
+          class="no-shadow"
+          style="
+            border-top-left-radius: 80px 80px;
+            border-top-right-radius: 12px 12px;
+          "
+        >
           <q-btn
             @click="id = item.id"
             v-for="item in btnGroup"
@@ -61,12 +68,45 @@
             :label="item.title"
             :icon="item.icon"
             size="lg"
+            class="q-pa-md no-border-radius"
             :color="item.id == id ? 'primary' : 'accent'"
             :text-color="item.id == id ? 'white' : 'black'"
           />
         </q-btn-group>
 
-        <div style="height: 200px" class="bg-accent"></div>
+        <div class="q-pa-md bg-accent full-width row q-gutter-x-lg">
+          <home-select :options="options" title="Destination" icon="tour" />
+          <home-select :options="options" title="Tour Type" icon="festival" />
+          <home-select :options="options" title="When" icon="schedule" />
+          <home-select :options="options" title="Tour Duration" icon="timer" />
+
+          <q-btn color="primary" class="col-grow" size="lg" label="Search" />
+
+          <!-- <q-select
+            class="col-3"
+            v-model="model"
+            :options="options"
+            label="Filled"
+          >
+            <template v-slot:before>
+              <q-icon name="flight_takeoff" />
+            </template>
+          </q-select>
+          <q-select
+            class="col-3"
+            v-model="model"
+            :options="options"
+            label="Filled"
+          >
+          </q-select>
+          <q-select
+            class="col-3"
+            v-model="model"
+            :options="options"
+            label="Filled"
+          >
+          </q-select> -->
+        </div>
       </div>
     </div>
   </div>
@@ -77,6 +117,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import HomeSlide from 'src/components/HomeSlide.vue';
+import HomeSelect from 'src/components/HomeSelect.vue';
 
 defineOptions({
   name: 'HomePage',
@@ -109,6 +150,9 @@ const btnGroup = [
     icon: 'flight_takeoff',
   },
 ];
+
+const model = ref(null);
+const options = ref(['Google', 'Facebook', 'Twitter', 'Apple', 'Oracle']);
 
 const slide = ref(1);
 const id = ref('1');

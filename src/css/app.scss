@@ -74,3 +74,18 @@ $lg-breakpoint: 1920px;
 .vue-number-input--small {
   width: 7rem;
 }
+
+.q-field__native,
+.q-field__prefix,
+.q-field__suffix,
+.q-field__input {
+  font-weight: 600 !important;
+}
+
+.q-field__label {
+  font-weight: 600 !important;
+}
+
+.q-field--standard .q-field__control:before {
+  border-bottom: none !important;
+}
