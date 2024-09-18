@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
 // breakpoint variable, from https://quasar.dev/style/breakpoints
 $xs-breakpoint: 718px;
 $sm-breakpoint: 1024px;
@@ -88,4 +90,8 @@ $lg-breakpoint: 1920px;
 
 .q-field--standard .q-field__control:before {
   border-bottom: none !important;
+}
+
+.satisfy-font {
+  font-family: 'Satisfy', cursive;
 }
