@@ -11,6 +11,7 @@ export const useTourStore = () => {
     }),
     getters: {
       recommend: (state) => state.list?.slice(0, 10),
+      bundle: (state) => state.list?.slice(0, 6),
     },
     actions: {
       async fetchAll(callback?: () => void) {

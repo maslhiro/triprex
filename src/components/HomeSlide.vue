@@ -12,10 +12,10 @@
         {{ props.data.location }}
       </div>
 
-      <div class="text-h2 text-weight-bolder q-py-lg">
+      <div class="text-h1 text-weight-bolder q-py-lg">
         {{ props.data.title }}
       </div>
-      <p class="text-subtitle1 text-weight-bold">
+      <p class="text-h6 text-weight-bold">
         {{ props.data.desc }}
       </p>
 
@@ -24,15 +24,16 @@
           <q-btn
             color="primary"
             label="Book A Trip"
-            size="md"
+            size="lg"
             no-caps
+            class="text-weight-bolder"
             to="/tour"
           />
         </div>
 
         <div class="q-ml-lg q-qa-lg row content-center items-center">
           <q-icon name="compost" color="white" size="3rem" class="q-mr-sm" />
-          <div class="text-subtitle1 text-weight-bold">
+          <div class="text-h6 text-weight-bold">
             <div class="">Tripadvisor</div>
             <div>5.0/5.0</div>
           </div>

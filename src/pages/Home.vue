@@ -6,7 +6,6 @@
         v-model="slide"
         arrows
         infinite
-        autoplay
         height="700px"
         transition-prev="slide-right"
         transition-next="slide-left"
@@ -52,14 +51,7 @@
           justify-content: center;
         "
       >
-        <q-btn-group
-          push
-          class="no-shadow"
-          style="
-            border-top-left-radius: 80px 80px;
-            border-top-right-radius: 12px 12px;
-          "
-        >
+        <q-btn-group class="no-shadow overflow-hidden">
           <q-btn
             @click="id = item.id"
             v-for="item in btnGroup"
@@ -74,53 +66,143 @@
           />
         </q-btn-group>
 
-        <div class="q-pa-md bg-accent full-width row q-gutter-x-lg">
-          <home-select :options="options" title="Destination" icon="tour" />
-          <home-select :options="options" title="Tour Type" icon="festival" />
-          <home-select :options="options" title="When" icon="schedule" />
-          <home-select :options="options" title="Tour Duration" icon="timer" />
-
-          <q-btn color="primary" class="col-grow" size="lg" label="Search" />
-
-          <!-- <q-select
-            class="col-3"
-            v-model="model"
+        <div class="bg-accent full-width row q-col-gutter-md">
+          <div class="col-md-1 gt-sm" />
+          <home-select
+            class="col-6 col-md-3 text-h6"
             :options="options"
-            label="Filled"
-          >
-            <template v-slot:before>
-              <q-icon name="flight_takeoff" />
-            </template>
-          </q-select>
-          <q-select
-            class="col-3"
-            v-model="model"
+            title="Destination"
+            icon="tour"
+          />
+          <home-select
+            class="col-6 col-md-2 text-h6"
             :options="options"
-            label="Filled"
-          >
-          </q-select>
-          <q-select
-            class="col-3"
-            v-model="model"
+            title="Tour Type"
+            icon="festival"
+          />
+          <home-select
+            class="col-6 col-md-2 text-h6"
             :options="options"
-            label="Filled"
-          >
-          </q-select> -->
+            title="When"
+            icon="schedule"
+          />
+          <home-select
+            class="col-6 col-md-3 text-h6"
+            :options="options"
+            title="Tour Duration"
+            icon="timer"
+          />
+          <div class="col-grow">
+            <q-btn
+              no-caps
+              text-color="white"
+              color="primary"
+              class="full-width"
+              size="lg"
+              label="Search"
+            />
+          </div>
         </div>
       </div>
     </div>
 
-    <span> </span>
-    <div class="satisfy-font text-h1">dkjakdsa</div>
+    <div class="container q-py-lg non-selectable">
+      <div class="col row q-col-gutter-x-lg">
+        <home-session
+          class="col-12 col-md-6"
+          session="About Us"
+          title="Let's Know About Our Journey For TripRex"
+          desc="Etiam ac tortor id purus commodo vulputate. Vestibulum porttitor erat felis and sed vehicula tortor malesuada gravida. Mauris volutpat enim quis pulv gont congue. Suspendisse ullamcorper, enim vitae tristique blandit, eratot augue torel tempo libero, non porta lectus tortor et elit. Quisque finibusot enim et eratourgt gravida, eu elementum turpis lacinia. Integer female go tellus ligula, attendora and condimentum."
+        >
+          <div class="flex justify-between items-center">
+            <q-btn
+              class="q-ma-lg"
+              no-caps
+              size="lg"
+              color="primary"
+              label="More About"
+              to="/contact"
+            />
+
+            <div class="q-pa-md row items-center" style="height: 80px">
+              <div class="self-center justify-center">
+                <q-avatar
+                  v-for="n in 5"
+                  :key="n"
+                  size="40px"
+                  class="overlapping"
+                  :style="`left: -${n * 14}px`"
+                >
+                  <img :src="`https://cdn.quasar.dev/img/avatar${n + 1}.jpg`" />
+                </q-avatar>
+              </div>
+              <div class="column">
+                <span class="text-h6 text-weight-bold">600+</span>
+                <span class="text-h6">Customer</span>
+              </div>
+            </div>
+          </div>
+        </home-session>
+
+        <q-img
+          fit="scale-down"
+          class="gt-sm col-6"
+          src="https://triprex.b-cdn.net/wp-content/uploads/2024/02/about-img.png"
+        />
+      </div>
+
+      <home-session
+        session="Journey to the"
+        title="Desired Vacation Spots"
+        session-class="text-center"
+        title-class="text-center"
+      >
+      </home-session>
+
+      <home-session
+        session="Tour Package"
+        title="Affordable Vacation Bundles"
+        session-class="text-center"
+        title-class="text-center"
+      >
+        <div class="row q-col-gutter-md">
+          <package-card
+            class="col-12 col-md-6 col-lg-4"
+            v-for="item in recommendTour"
+            :key="item.name"
+            :data="item"
+          />
+        </div>
+
+        <q-btn
+          class="q-ma-lg self-center"
+          no-caps
+          size="lg"
+          rounded
+          color="secondary"
+          text-color="black"
+          label="View All Package"
+          to="/package-sidebar"
+        />
+      </home-session>
+    </div>
   </div>
 
   <div style="width: 100%; min-height: 20em"></div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import HomeSlide from 'src/components/HomeSlide.vue';
 import HomeSelect from 'src/components/HomeSelect.vue';
+import HomeSession from 'src/components/HomeSession.vue';
+import PackageCard from 'src/components/PackageCard.vue';
+import PhotoGallery from 'src/components/PhotoGallery.vue';
+
+import { useTourStore } from 'src/stores/tours';
+const store = useTourStore();
+
+const recommendTour = computed(() => store.bundle);
 
 defineOptions({
   name: 'HomePage',
@@ -161,4 +243,8 @@ const slide = ref(1);
 const id = ref('1');
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.overlapping {
+  border: 2px solid white;
+}
+</style>

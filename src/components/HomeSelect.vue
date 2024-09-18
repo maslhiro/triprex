@@ -1,12 +1,17 @@
 <template>
   <q-select
-    class="col-2a32 text-subtitle1"
-    popup-content-class="text-subtitle1 text-weight-medium"
+    popup-content-class="text-h6 text-weight-medium"
     v-model="model"
     :options="options"
     hide-bottom-space
     :label="title"
   >
+    <template v-slot:label>
+      <div class="text-h5">
+        {{ title }}
+      </div>
+    </template>
+
     <template v-slot:before>
       <q-icon :name="icon" color="primary" size="1.5rem" />
     </template>
@@ -16,7 +21,7 @@
 import { ref } from 'vue';
 
 defineOptions({
-  name: 'HomeSlide',
+  name: 'HomeSelect',
 });
 
 interface Props {
@@ -26,6 +31,6 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {});
-const model = ref(null);
+const model = ref('google');
 </script>
 <style lang="scss" scoped></style>
