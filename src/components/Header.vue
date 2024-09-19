@@ -1,7 +1,13 @@
 <template>
   <q-header elevated>
     <div class="row content bg-white text-dark non-selectable">
-      <img src="logo.svg" height="40px" fit="contain" ratio="1" />
+      <img
+        src="logo.svg"
+        height="40px"
+        fit="contain"
+        ratio="1"
+        @click="router.push('/')"
+      />
       <div class="gt-md col row flex-center">
         <menu-hover
           v-for="item in data"
@@ -37,9 +43,12 @@ import MenuHover from 'src/components/MenuHover.vue';
 import { Menu } from 'src/types';
 import ExtraInfo from './ExtraInfo.vue';
 import { useContactStore } from 'src/stores/contact';
+import { useRouter } from 'vue-router';
 defineOptions({
   name: 'CustomHeader',
 });
+
+const router = useRouter();
 
 interface Props {
   data: Menu[];

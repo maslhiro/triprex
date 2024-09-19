@@ -12,7 +12,7 @@
         {{ props.data.location }}
       </div>
 
-      <div class="text-h1 text-weight-bolder q-py-lg">
+      <div class="text-h2 text-weight-bolder q-py-lg">
         {{ props.data.title }}
       </div>
       <p class="text-h6 text-weight-bold">
@@ -27,7 +27,7 @@
             size="lg"
             no-caps
             class="text-weight-bolder"
-            to="/tour"
+            to="/tours"
           />
         </div>
 

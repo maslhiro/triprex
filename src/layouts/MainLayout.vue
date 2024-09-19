@@ -93,6 +93,7 @@ const drawerRightVisible = ref(false);
 const menu = [
   {
     title: 'HOME',
+    href: '/',
     submenu: [
       { title: 'HOME 1', href: '/' },
       { title: 'HOME 2', href: '/' },
