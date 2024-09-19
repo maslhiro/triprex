@@ -65,7 +65,7 @@
       </div>
     </div>
 
-    <div class="container q-py-lg non-selectable">
+    <div class="container q-py-lg non-selectable q-gutter-y-lg">
       <div class="col row q-col-gutter-x-lg">
         <home-session
           class="col-12 col-md-6"
@@ -116,6 +116,17 @@
         session-class="text-center"
         title-class="text-center"
       >
+        <div class="row q-gutter-md justify-center">
+          <destination-card
+            class="destination-card"
+            v-for="item in recommendDestination"
+            :key="item.name"
+            :name="item.name"
+            :desc="item.desc"
+            :image="item.image"
+            :href="item.href"
+          />
+        </div>
       </home-session>
 
       <home-session
@@ -156,13 +167,17 @@ import HomeSlide from 'src/components/HomeSlide.vue';
 import HomeSelect from 'src/components/HomeSelect.vue';
 import HomeSession from 'src/components/HomeSession.vue';
 import PackageCard from 'src/components/PackageCard.vue';
+import DestinationCard from 'src/components/DestinationCard.vue';
 
 import { useTourStore } from 'src/stores/tours';
 import { Slide } from 'src/types';
 import { title } from 'process';
-const store = useTourStore();
+import { useDestinationStore } from 'src/stores/destination';
+const tourStore = useTourStore();
+const destinationStore = useDestinationStore();
 
-const recommendTour = computed(() => store.bundle);
+const recommendTour = computed(() => tourStore.bundle);
+const recommendDestination = computed(() => destinationStore.bundle);
 
 defineOptions({
   name: 'HomePage',
@@ -375,13 +390,13 @@ const tabData = [
   },
 ];
 
-const model = ref(null);
-
 const slideIndex = ref(1);
 const tabIndex = ref(0);
 </script>
 
 <style scoped lang="scss">
+@import '../css/app.scss';
+
 .overlapping {
   border: 2px solid white;
 }
@@ -397,5 +412,38 @@ const tabIndex = ref(0);
   -webkit-border-radius: 24px 24px 0px 0px;
   border-radius: 24px 24px 0px 0px;
   overflow: hidden;
+}
+
+.destination-card {
+  width: 25%;
+  height: 380px;
+}
+
+@media (min-width: $xs-breakpoint) {
+  .destination-card {
+    width: 45%;
+    height: 350px;
+  }
+}
+
+@media (min-width: $sm-breakpoint) {
+  .destination-card {
+    width: 30%;
+    height: 350px;
+  }
+}
+
+@media (min-width: $md-breakpoint) {
+  .destination-card {
+    width: 25%;
+    height: 380px;
+  }
+}
+
+@media (min-width: $lg-breakpoint) {
+  .destination-card {
+    width: 20%;
+    height: 350px;
+  }
 }
 </style>

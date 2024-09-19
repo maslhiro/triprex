@@ -1,6 +1,6 @@
 <template>
   <q-header elevated>
-    <div class="row content bg-white text-dark non-selectable">
+    <div class="row content bg-white text-dark cursor-pointer">
       <img
         src="logo.svg"
         height="40px"

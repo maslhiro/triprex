@@ -11,6 +11,7 @@ export const useDestinationStore = () => {
     }),
     getters: {
       destinationList: (state) => state.list,
+      bundle: (state) => state.list.slice(0, 6),
       ourDestination: (state) => state.list?.slice(0, 10),
     },
     actions: {
