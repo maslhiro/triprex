@@ -108,7 +108,6 @@
           src="https://triprex.b-cdn.net/wp-content/uploads/2024/02/about-img.png"
         />
       </div>
-
       <home-session
         session="Journey to the"
         title="Desired Vacation Spots"
