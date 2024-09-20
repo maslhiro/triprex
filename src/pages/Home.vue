@@ -6,6 +6,7 @@
         v-model="slideIndex"
         arrows
         infinite
+        autoplay
         height="700px"
         transition-prev="slide-right"
         transition-next="slide-left"
@@ -73,7 +74,7 @@
           title="Let's Know About Our Journey For TripRex"
           desc="Etiam ac tortor id purus commodo vulputate. Vestibulum porttitor erat felis and sed vehicula tortor malesuada gravida. Mauris volutpat enim quis pulv gont congue. Suspendisse ullamcorper, enim vitae tristique blandit, eratot augue torel tempo libero, non porta lectus tortor et elit. Quisque finibusot enim et eratourgt gravida, eu elementum turpis lacinia. Integer female go tellus ligula, attendora and condimentum."
         >
-          <div class="flex justify-between items-center">
+          <div class="flex justify-between items-center row">
             <q-btn
               class="q-ma-lg"
               no-caps
@@ -84,18 +85,16 @@
             />
 
             <div class="q-pa-md row items-center" style="height: 80px">
-              <div class="self-center justify-center">
-                <q-avatar
-                  v-for="n in 5"
-                  :key="n"
-                  size="40px"
-                  class="overlapping"
-                  :style="`left: -${n * 14}px`"
-                >
-                  <img :src="`https://cdn.quasar.dev/img/avatar${n + 1}.jpg`" />
-                </q-avatar>
-              </div>
-              <div class="column">
+              <q-avatar
+                v-for="n in 5"
+                :key="n"
+                size="40px"
+                class="overlapping"
+                :style="`left: -${n * 14}px`"
+              >
+                <img :src="`https://cdn.quasar.dev/img/avatar${n + 1}.jpg`" />
+              </q-avatar>
+              <div class="column" style="margin-left: -30px">
                 <span class="text-h6 text-weight-bold">600+</span>
                 <span class="text-h6">Customer</span>
               </div>
@@ -415,8 +414,8 @@ const tabIndex = ref(0);
 }
 
 .destination-card {
-  width: 25%;
-  height: 380px;
+  width: 20%;
+  height: 400px;
 }
 
 @media (min-width: $xs-breakpoint) {
@@ -436,7 +435,7 @@ const tabIndex = ref(0);
 @media (min-width: $md-breakpoint) {
   .destination-card {
     width: 25%;
-    height: 380px;
+    height: 400px;
   }
 }
 

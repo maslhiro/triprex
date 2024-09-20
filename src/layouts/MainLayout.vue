@@ -94,14 +94,6 @@ const menu = [
   {
     title: 'HOME',
     href: '/',
-    submenu: [
-      { title: 'HOME 1', href: '/' },
-      { title: 'HOME 2', href: '/' },
-      { title: 'HOME 3', href: '' },
-      { title: 'HOME 4', href: '' },
-      { title: 'HOME 5', href: '' },
-      { title: 'HOME 6', href: '' },
-    ],
   },
   { title: 'ABOUT' },
   {
